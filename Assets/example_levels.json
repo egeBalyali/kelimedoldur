@@ -1,0 +1,29 @@
+{
+  "levels": [
+    {
+      "name": "Level_01",
+      "letters": "EATSDO",
+      "sentences": [
+        "TH_e C_aT_s",
+        "A B_iG D_oG"
+      ]
+    },
+    {
+      "name": "Level_02",
+      "letters": "SUNSHINE",
+      "sentences": [
+        "TH_e S_uN I_s O_uT",
+        "H_aV_e A N_iC_e D_aY"
+      ]
+    },
+    {
+      "name": "Level_03",
+      "letters": "QUICKBROWNFOX",
+      "sentences": [
+        "TH_e Q_uI_cK F_oX",
+        "J_uM_pS O_vE_r",
+        "TH_e L_aZ_y D_oG"
+      ]
+    }
+  ]
+}
