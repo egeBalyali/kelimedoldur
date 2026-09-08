@@ -1,0 +1,92 @@
+# =========================
+# Unity generated folders
+# =========================
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+
+# Unity cache / generated files
+/[Aa]ssets/**/*.csproj
+/[Aa]ssets/**/*.sln
+/[Aa]ssets/**/*.suo
+
+# =========================
+# Unity crash reports
+# =========================
+sysinfo.txt
+*.stacktrace
+
+# =========================
+# Visual Studio / Rider
+# =========================
+.vs/
+.idea/
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.pdb
+*.mdb
+*.opendb
+
+# =========================
+# VS Code
+# =========================
+.vscode/
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# Build artifacts
+# =========================
+*.apk
+*.aab
+*.unitypackage
+*.app
+*.exe
+*.appx
+*.x86
+*.x86_64
+*.dll
+*.pdb
+*.mdb
+
+# =========================
+# Addressables
+# =========================
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*
+
+# =========================
+# User-specific settings
+# =========================
+/[Aa]ssets/[Ee]ditor/[Dd]efault[Tt]heme*
+/[Aa]ssets/[Ee]ditor/[Cc]oroutine*
+/[Aa]ssets/[Ee]ditor/[Ll]ayouts/
+
+# =========================
+# Temporary / generated
+# =========================
+*.tmp
+*.temp
+*.log
+
+# =========================
+# Environment / secrets
+# =========================
+.env
+.env.*
+!.env.example
