@@ -250,6 +250,7 @@ MonoBehaviour:
   button: {fileID: 4896786396953917899}
   canvasGroup: {fileID: 7165469472382124403}
   activeIndicator: {fileID: 5273832810960306182}
+  clickParticlePrefab: {fileID: 4509978723830917449, guid: 452334667b0cd01419eaac44a54cddea, type: 3}
   spriteLibrary: {fileID: 11400000, guid: e9b1a96d0d5de3b489c56a8e674d328c, type: 2}
   emptySprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!225 &7165469472382124403

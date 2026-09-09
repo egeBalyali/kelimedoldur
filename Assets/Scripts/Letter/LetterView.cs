@@ -19,6 +19,10 @@ public class LetterView : MonoBehaviour
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private GameObject activeIndicator; // e.g. an outline/glow, enabled while this is the active gap
 
+    [Header("Effects")]
+    [Tooltip("Particle system prefab instantiated on click.")]
+    [SerializeField] private GameObject clickParticlePrefab;
+
     [Tooltip("Shared letter -> sprite mapping. Assign once on the prefab.")]
     [SerializeField] private LetterSpriteLibrary spriteLibrary;
 
@@ -39,7 +43,31 @@ public class LetterView : MonoBehaviour
         if (canvasGroup == null)
             canvasGroup = GetComponent<CanvasGroup>();
 
-        button.onClick.AddListener(() => Clicked?.Invoke(this));
+        button.onClick.AddListener(HandleClick);
+    }
+
+    private void HandleClick()
+    {
+        SpawnClickParticle();
+        Clicked?.Invoke(this);
+    }
+
+    private void SpawnClickParticle()
+    {
+        if (clickParticlePrefab == null)
+            return;
+
+        GameObject particleInstance = Instantiate(clickParticlePrefab, transform.position, Quaternion.identity, transform.parent.parent.parent);
+
+        if (particleInstance.TryGetComponent<ParticleSystem>(out var ps))
+        {
+            float duration = ps.main.duration + ps.main.startLifetime.constantMax;
+            Destroy(particleInstance, duration);
+        }
+        else
+        {
+            Destroy(particleInstance, 2f);
+        }
     }
 
     /// <summary>Instantiates a tile already showing a letter (e.g. a fixed sentence letter or a pool letter).</summary>
