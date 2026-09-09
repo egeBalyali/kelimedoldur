@@ -69,6 +69,30 @@ public class SentenceData
         return result.ToArray();
     }
 
+    /// <summary>
+    /// Returns every gap "answer" letter used in this sentence (the char that was written
+    /// right after each '_' in the raw string), in the order the gaps appear. Duplicates are
+    /// kept intentionally — each gap consumes its own letter tile, even if the same letter
+    /// is used more than once (e.g. the two A's in "_a_n_k_a_r_a"). Used to auto-populate the
+    /// level's letter pool so authors don't have to keep it in sync by hand.
+    /// </summary>
+    public char[] GetGapLetters()
+    {
+        EnsureParsed();
+        if (gapSolutions == null || gapSolutions.Count == 0)
+            return Array.Empty<char>();
+
+        var indices = new List<int>(gapSolutions.Keys);
+        indices.Sort();
+
+        var result = new char[indices.Count];
+        for (int i = 0; i < indices.Count; i++)
+        {
+            result[i] = gapSolutions[indices[i]];
+        }
+        return result;
+    }
+
     /// <summary>Reconstructs display string, replacing '_' with a placeholder.</summary>
     public string ToDisplayString(char emptyPlaceholder = '_')
     {
@@ -149,7 +173,7 @@ public class LevelData : ScriptableObject
     [Tooltip("Stages of this level, played in order.")]
     [SerializeField] private List<SentenceData> sentences = new List<SentenceData>();
 
-    [Tooltip("All letters available to the player for this level.")]
+    [Tooltip("All letters available to the player for this level. Gap answer letters are added here automatically.")]
     public char[] letters;
 
     public int SentenceCount => sentences?.Count ?? 0;
@@ -169,10 +193,13 @@ public class LevelData : ScriptableObject
             throw new ArgumentNullException(nameof(sentence));
 
         sentences.Add(sentence);
+        RegisterLettersFromSentence(sentence);
     }
 
     /// <summary>
     /// Builds a SentenceData from inline raw string format (e.g., "TH_e C_a T_s") and adds it.
+    /// Any gap answer letters (the char right after each '_') are automatically merged into
+    /// the level's <see cref="letters"/> pool if not already present.
     /// </summary>
     public SentenceData AddSentence(string raw)
     {
@@ -182,6 +209,7 @@ public class LevelData : ScriptableObject
         var sentence = new SentenceData();
         sentence.SetRawSentence(raw);
         sentences.Add(sentence);
+        RegisterLettersFromSentence(sentence);
         return sentence;
     }
 
@@ -191,6 +219,7 @@ public class LevelData : ScriptableObject
             throw new ArgumentNullException(nameof(sentence));
 
         sentences.Insert(Mathf.Clamp(index, 0, sentences.Count), sentence);
+        RegisterLettersFromSentence(sentence);
     }
 
     public bool RemoveSentenceAt(int index)
@@ -205,5 +234,34 @@ public class LevelData : ScriptableObject
     public void ClearSentences()
     {
         sentences.Clear();
+    }
+
+    /// <summary>
+    /// Clears the letter pool. Call before re-deriving <see cref="letters"/> from scratch
+    /// (e.g. when re-importing a level), since <see cref="RegisterLettersFromSentence"/> only
+    /// appends.
+    /// </summary>
+    public void ClearLetters()
+    {
+        letters = Array.Empty<char>();
+    }
+
+    /// <summary>
+    /// Appends every gap answer letter from the given sentence onto <see cref="letters"/>, in
+    /// order. Duplicates are intentional and expected — every gap needs its own letter tile,
+    /// even if the letter already appears elsewhere in the pool.
+    /// </summary>
+    private void RegisterLettersFromSentence(SentenceData sentence)
+    {
+        if (sentence == null)
+            return;
+
+        char[] gapLetters = sentence.GetGapLetters();
+        if (gapLetters == null || gapLetters.Length == 0)
+            return;
+
+        var updated = new List<char>(letters ?? Array.Empty<char>());
+        updated.AddRange(gapLetters);
+        letters = updated.ToArray();
     }
 }

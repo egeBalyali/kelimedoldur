@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Level_03
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   sentences:
-  - rawSentence: TH_e Q_uI_cK F_oX
-  - rawSentence: J_uM_pS O_vE_r
-  - rawSentence: TH_e L_aZ_y D_oG
-  letters: 51005500490043004b00420052004f0057004e0046004f005800
+  - rawSentence: W_hAT C_oLOR I_s T_hE S_kY
+  - rawSentence: _b_l_u_e
+  letters: 68006f00730068006b0062006c0075006500

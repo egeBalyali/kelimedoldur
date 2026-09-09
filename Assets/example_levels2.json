@@ -1,0 +1,16 @@
+{
+  "levels": [
+    {
+      "name": "Level_01",
+      "sentences": ["WH_aT I_s T_hE ", "C_aP_iTAL OF T_u_r_kEY", "_a_n_k_a_r_a"]
+    },
+    {
+      "name": "Level_02",
+      "sentences": ["H_oW M_aNY L_eGS", "D_oES A S_pIDER H_aVE", "_e_i_g_h_t"]
+    },
+    {
+      "name": "Level_03",
+      "sentences": ["W_hAT C_oLOR I_s T_hE S_kY", "_b_l_u_e"]
+    }
+  ]
+}
