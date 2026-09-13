@@ -1,0 +1,819 @@
+fileFormatVersion: 2
+guid: a2c722f84c843ac4daa892d7308d5d01
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7263751119369942283
+    second: BackgroundsuzMeka_0
+  - first:
+      213: 8400538934251267712
+    second: BackgroundsuzMeka_1
+  - first:
+      213: 8619191104975236292
+    second: BackgroundsuzMeka_2
+  - first:
+      213: 3114568794571752786
+    second: BackgroundsuzMeka_3
+  - first:
+      213: -781288943108186290
+    second: BackgroundsuzMeka_4
+  - first:
+      213: 694326785591301376
+    second: BackgroundsuzMeka_5
+  - first:
+      213: 8197956128391129815
+    second: BackgroundsuzMeka_6
+  - first:
+      213: -1709537858542506524
+    second: BackgroundsuzMeka_7
+  - first:
+      213: -1267239017723964486
+    second: BackgroundsuzMeka_8
+  - first:
+      213: 4616526011935193804
+    second: BackgroundsuzMeka_9
+  - first:
+      213: 3292792798181175668
+    second: BackgroundsuzMeka_10
+  - first:
+      213: -2044552827449840345
+    second: BackgroundsuzMeka_11
+  - first:
+      213: -7451782228389859641
+    second: BackgroundsuzMeka_12
+  - first:
+      213: 1601678527564705109
+    second: BackgroundsuzMeka_13
+  - first:
+      213: -1414049697259076939
+    second: BackgroundsuzMeka_14
+  - first:
+      213: 1271474210214953931
+    second: BackgroundsuzMeka_15
+  - first:
+      213: 2366600385967265011
+    second: BackgroundsuzMeka_16
+  - first:
+      213: -3967327986341252788
+    second: BackgroundsuzMeka_17
+  - first:
+      213: 7961874412390162737
+    second: BackgroundsuzMeka_18
+  - first:
+      213: 2451689230178679118
+    second: BackgroundsuzMeka_19
+  - first:
+      213: 2523938907309745392
+    second: BackgroundsuzMeka_20
+  - first:
+      213: 9033328571598331093
+    second: BackgroundsuzMeka_21
+  - first:
+      213: 695753692279207317
+    second: BackgroundsuzMeka_22
+  - first:
+      213: -8132846196419142582
+    second: BackgroundsuzMeka_23
+  - first:
+      213: 674028617104254352
+    second: BackgroundsuzMeka_24
+  - first:
+      213: 704507291842351234
+    second: BackgroundsuzMeka_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_0
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 972
+        width: 110
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0534e678270ec460800000000000000
+      internalID: 7263751119369942283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_1
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 972
+        width: 109
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 086a2e917a5b49470800000000000000
+      internalID: 8400538934251267712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_2
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 972
+        width: 110
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4cc614fb4a48d9770800000000000000
+      internalID: 8619191104975236292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_3
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 972
+        width: 110
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 25547f421db293b20800000000000000
+      internalID: 3114568794571752786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_4
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 972
+        width: 110
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4f981f78dd4825f0800000000000000
+      internalID: -781288943108186290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_5
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 785
+        width: 110
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0055535688eb2a900800000000000000
+      internalID: 694326785591301376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_6
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 785
+        width: 111
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7da6df40aadf4c170800000000000000
+      internalID: 8197956128391129815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_7
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 785
+        width: 110
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4eded7b00608648e0800000000000000
+      internalID: -1709537858542506524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_8
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 785
+        width: 110
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab35c07d3dcd96ee0800000000000000
+      internalID: -1267239017723964486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_9
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 785
+        width: 110
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cca7fbdc2f1311040800000000000000
+      internalID: 4616526011935193804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_10
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 599
+        width: 111
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 471bd8e9a9952bd20800000000000000
+      internalID: 3292792798181175668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_11
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 599
+        width: 111
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72de453390a40a3e0800000000000000
+      internalID: -2044552827449840345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_12
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 599
+        width: 111
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cee0456b83f59890800000000000000
+      internalID: -7451782228389859641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_13
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 599
+        width: 112
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55d6ddf722e4a3610800000000000000
+      internalID: 1601678527564705109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_14
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 599
+        width: 111
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b2cf14da49406ce0800000000000000
+      internalID: -1414049697259076939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_15
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 412
+        width: 112
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc3cee0ce0f25a110800000000000000
+      internalID: 1271474210214953931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_16
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 412
+        width: 112
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f491e2238ad7d020800000000000000
+      internalID: 2366600385967265011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_17
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 412
+        width: 112
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c41f9aa573831f8c0800000000000000
+      internalID: -3967327986341252788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_18
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 412
+        width: 112
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 131a9c028924e7e60800000000000000
+      internalID: 7961874412390162737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_19
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 412
+        width: 111
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e4973708d56260220800000000000000
+      internalID: 2451689230178679118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_20
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 225
+        width: 112
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f42cf45015d60320800000000000000
+      internalID: 2523938907309745392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_21
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 225
+        width: 113
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5dc5189a974dc5d70800000000000000
+      internalID: 9033328571598331093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_22
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 225
+        width: 112
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 595f77ffb40d7a900800000000000000
+      internalID: 695753692279207317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_23
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 225
+        width: 112
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a4cdc895973522f80800000000000000
+      internalID: -8132846196419142582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_24
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 38
+        width: 112
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09562f2c471aa5900800000000000000
+      internalID: 674028617104254352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundsuzMeka_25
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 38
+        width: 112
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2809fe736a9e6c900800000000000000
+      internalID: 704507291842351234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BackgroundsuzMeka_0: 7263751119369942283
+      BackgroundsuzMeka_1: 8400538934251267712
+      BackgroundsuzMeka_10: 3292792798181175668
+      BackgroundsuzMeka_11: -2044552827449840345
+      BackgroundsuzMeka_12: -7451782228389859641
+      BackgroundsuzMeka_13: 1601678527564705109
+      BackgroundsuzMeka_14: -1414049697259076939
+      BackgroundsuzMeka_15: 1271474210214953931
+      BackgroundsuzMeka_16: 2366600385967265011
+      BackgroundsuzMeka_17: -3967327986341252788
+      BackgroundsuzMeka_18: 7961874412390162737
+      BackgroundsuzMeka_19: 2451689230178679118
+      BackgroundsuzMeka_2: 8619191104975236292
+      BackgroundsuzMeka_20: 2523938907309745392
+      BackgroundsuzMeka_21: 9033328571598331093
+      BackgroundsuzMeka_22: 695753692279207317
+      BackgroundsuzMeka_23: -8132846196419142582
+      BackgroundsuzMeka_24: 674028617104254352
+      BackgroundsuzMeka_25: 704507291842351234
+      BackgroundsuzMeka_3: 3114568794571752786
+      BackgroundsuzMeka_4: -781288943108186290
+      BackgroundsuzMeka_5: 694326785591301376
+      BackgroundsuzMeka_6: 8197956128391129815
+      BackgroundsuzMeka_7: -1709537858542506524
+      BackgroundsuzMeka_8: -1267239017723964486
+      BackgroundsuzMeka_9: 4616526011935193804
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

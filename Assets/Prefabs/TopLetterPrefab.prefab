@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 7147569244411860720}
   - component: {fileID: 7165469472382124403}
   m_Layer: 5
-  m_Name: LetterPrefab
+  m_Name: TopLetterPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -251,8 +251,8 @@ MonoBehaviour:
   canvasGroup: {fileID: 7165469472382124403}
   activeIndicator: {fileID: 5273832810960306182}
   clickParticlePrefab: {fileID: 4509978723830917449, guid: 452334667b0cd01419eaac44a54cddea, type: 3}
-  spriteLibrary: {fileID: 11400000, guid: e9b1a96d0d5de3b489c56a8e674d328c, type: 2}
-  emptySprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  spriteLibrary: {fileID: 11400000, guid: fa2a9004a4b3e9d40afb5d24c640c5e0, type: 2}
+  emptySprite: {fileID: -4484362866910955720, guid: c4859698e0122964c955ccadc933e5da, type: 3}
 --- !u!225 &7165469472382124403
 CanvasGroup:
   m_ObjectHideFlags: 0
