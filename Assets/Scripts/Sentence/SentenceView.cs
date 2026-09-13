@@ -44,6 +44,11 @@ public class SentenceView : MonoBehaviour
 
     public event Action<int> GapPressed;
 
+
+    [Header("Last Sentence")]
+    [Tooltip("Activated only when Setup is called with isLastSentence = true; deactivated on Clear().")]
+    [SerializeField] private GameObject lastSentenceOnlyObject;
+
     public bool IsComplete
     {
         get
@@ -59,10 +64,13 @@ public class SentenceView : MonoBehaviour
     public int FirstGapIndex => gapIndicesInOrder.Count > 0 ? gapIndicesInOrder[0] : -1;
 
     /// <summary>Builds the word-wrapped layout for a sentence using DisplayCharacters.</summary>
-    public void Setup(SentenceData sentence)
+    public void Setup(SentenceData sentence, bool isLastSentence = false)
     {
         Clear();
         currentSentence = sentence;
+
+        if (lastSentenceOnlyObject != null)
+            lastSentenceOnlyObject.SetActive(isLastSentence);
 
         if (sentence == null || sentence.DisplayCharacters == null || sentence.DisplayCharacters.Length == 0)
             return;
@@ -210,6 +218,9 @@ public class SentenceView : MonoBehaviour
     {
         DestroyActiveTraceSequencer();
         DestroyTraceTargetRect();
+
+        if (lastSentenceOnlyObject != null)
+            lastSentenceOnlyObject.SetActive(false);
 
         foreach (GameObject go in spawned)
             if (go != null)

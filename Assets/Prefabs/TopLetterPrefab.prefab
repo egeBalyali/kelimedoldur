@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7762177360134983212
 CanvasRenderer:
@@ -164,7 +164,7 @@ RectTransform:
   m_GameObject: {fileID: 1326162594327698464}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4012398321119108560}
@@ -172,7 +172,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1.6, y: -1.2}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1096089644298840931
 CanvasRenderer:
@@ -542,6 +542,8 @@ MonoBehaviour:
   clickParticlePrefab: {fileID: 4509978723830917449, guid: 452334667b0cd01419eaac44a54cddea, type: 3}
   spriteLibrary: {fileID: 11400000, guid: fa2a9004a4b3e9d40afb5d24c640c5e0, type: 2}
   emptySprite: {fileID: -4484362866910955720, guid: c4859698e0122964c955ccadc933e5da, type: 3}
+  targetRectTransform: {fileID: 3133954107362018222}
+  pressYHeightOffset: 0
   letterTexts:
   - {fileID: 3900360830426768769}
   - {fileID: 5989970728290047258}
@@ -564,7 +566,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5116860779116115909
 RectTransform:
   m_ObjectHideFlags: 0
@@ -582,7 +584,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6245671109625038814
 CanvasRenderer:

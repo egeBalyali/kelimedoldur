@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82206f1a42f74d3448420578b842a756, type: 3}
+  m_Name: Level_TR
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  sentences:
+  - rawSentence: I_l_k _b_a_sB_aKAN
+  - rawSentence: KI_m_dIR?
+  - rawSentence: _i_s_m_e_t _i_n_o_n_u
+  letters: 730061006d006e006c006b006400620069006900730061006d006e007400650075006f00

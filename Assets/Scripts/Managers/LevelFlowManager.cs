@@ -142,7 +142,7 @@ public class LevelFlowManager : MonoBehaviour
     private void ShowCurrentSentence()
     {
         SentenceData sentence = currentLevel.GetSentence(currentSentenceIndex);
-        sentenceView.Setup(sentence);
+        sentenceView.Setup(sentence, IsLastSentence);
 
         RestoreGapFillsForCurrentSentence();
 
