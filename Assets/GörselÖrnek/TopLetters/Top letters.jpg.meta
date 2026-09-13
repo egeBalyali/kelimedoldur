@@ -129,10 +129,10 @@ TextureImporter:
       name: Top letters_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 408
-        width: 204
-        height: 203
+        x: 22
+        y: 410
+        width: 175
+        height: 175
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,10 +151,10 @@ TextureImporter:
       name: Top letters_1
       rect:
         serializedVersion: 2
-        x: 204
-        y: 408
-        width: 204
-        height: 203
+        x: 238
+        y: 422
+        width: 152
+        height: 152
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -173,10 +173,10 @@ TextureImporter:
       name: Top letters_2
       rect:
         serializedVersion: 2
-        x: 408
-        y: 408
-        width: 204
-        height: 203
+        x: 437
+        y: 421
+        width: 152
+        height: 152
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,10 +195,10 @@ TextureImporter:
       name: Top letters_3
       rect:
         serializedVersion: 2
-        x: 611
-        y: 408
-        width: 204
-        height: 203
+        x: 639
+        y: 420
+        width: 152
+        height: 152
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,10 +217,10 @@ TextureImporter:
       name: Top letters_4
       rect:
         serializedVersion: 2
-        x: 816
-        y: 408
-        width: 204
-        height: 203
+        x: 824
+        y: 411
+        width: 175
+        height: 175
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,10 +239,10 @@ TextureImporter:
       name: Top letters_5
       rect:
         serializedVersion: 2
-        x: 0
-        y: 205
-        width: 204
-        height: 203
+        x: 35
+        y: 222
+        width: 152
+        height: 152
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -261,10 +261,10 @@ TextureImporter:
       name: Top letters_6
       rect:
         serializedVersion: 2
-        x: 204
-        y: 205
-        width: 204
-        height: 203
+        x: 237
+        y: 225
+        width: 152
+        height: 152
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

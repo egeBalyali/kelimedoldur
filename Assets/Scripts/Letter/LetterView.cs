@@ -29,8 +29,10 @@ public class LetterView : MonoBehaviour
     [Tooltip("Optional sprite shown for an empty gap slot (e.g. a faded/dashed placeholder). Leave empty to just hide the image instead.")]
     [SerializeField] private Sprite emptySprite;
 
-    public char Letter { get; private set; }
-    public bool IsEmpty { get; private set; } = true;
+    // NOTE: setters changed from `private set` -> `protected set` so subclasses
+    // (e.g. TopLetterView) can update state from their own SetLetter/SetEmpty overrides.
+    public char Letter { get; protected set; }
+    public bool IsEmpty { get; protected set; } = true;
 
     /// <summary>Raised whenever this tile is clicked, passing itself along.</summary>
     public event Action<LetterView> Clicked;
@@ -57,7 +59,7 @@ public class LetterView : MonoBehaviour
         if (clickParticlePrefab == null)
             return;
 
-        GameObject particleInstance = Instantiate(clickParticlePrefab, transform.position, Quaternion.identity, transform.parent.parent.parent);
+        GameObject particleInstance = Instantiate(clickParticlePrefab, transform.position + new Vector3(0, 0, -1), Quaternion.identity, transform.parent.parent.parent);
 
         if (particleInstance.TryGetComponent<ParticleSystem>(out var ps))
         {
@@ -86,7 +88,8 @@ public class LetterView : MonoBehaviour
         return instance;
     }
 
-    public void SetLetter(char letter)
+    // NOTE: now `virtual` so TopLetterView can swap the sprite-based rendering for TMPro text.
+    public virtual void SetLetter(char letter)
     {
         Letter = letter;
         IsEmpty = false;
@@ -106,7 +109,8 @@ public class LetterView : MonoBehaviour
         }
     }
 
-    public void SetEmpty()
+    // NOTE: now `virtual` so TopLetterView can swap the sprite-based rendering for TMPro text.
+    public virtual void SetEmpty()
     {
         Letter = '\0';
         IsEmpty = true;
