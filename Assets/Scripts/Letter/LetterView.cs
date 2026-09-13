@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 /// <summary>
@@ -12,7 +13,7 @@ using UnityEngine.UI;
 /// </summary>
 [RequireComponent(typeof(Button))]
 [RequireComponent(typeof(CanvasGroup))]
-public class LetterView : MonoBehaviour
+public class LetterView : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private Image letterImage;
     [SerializeField] private Button button;
@@ -28,6 +29,16 @@ public class LetterView : MonoBehaviour
 
     [Tooltip("Optional sprite shown for an empty gap slot (e.g. a faded/dashed placeholder). Leave empty to just hide the image instead.")]
     [SerializeField] private Sprite emptySprite;
+
+    [Header("9-Slice Press Effect")]
+    [Tooltip("Target RectTransform to shrink (e.g., this tile's RectTransform or a child sliced Image RectTransform).")]
+    [SerializeField] private RectTransform targetRectTransform;
+
+    [Tooltip("Amount to subtract from sizeDelta.y on press.")]
+    [SerializeField] private float pressYHeightOffset = 15f;
+
+    private float originalHeight;
+    private bool isPressed;
 
     // NOTE: setters changed from `private set` -> `protected set` so subclasses
     // (e.g. TopLetterView) can update state from their own SetLetter/SetEmpty overrides.
@@ -45,7 +56,40 @@ public class LetterView : MonoBehaviour
         if (canvasGroup == null)
             canvasGroup = GetComponent<CanvasGroup>();
 
+        if (targetRectTransform == null)
+            targetRectTransform = GetComponent<RectTransform>();
+
+        if (targetRectTransform != null)
+            originalHeight = targetRectTransform.sizeDelta.y;
+
         button.onClick.AddListener(HandleClick);
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (button != null && !button.interactable)
+            return;
+
+        if (targetRectTransform != null && !isPressed)
+        {
+            isPressed = true;
+            targetRectTransform.sizeDelta = new Vector2(
+                targetRectTransform.sizeDelta.x,
+                originalHeight - pressYHeightOffset
+            );
+        }
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if (targetRectTransform != null && isPressed)
+        {
+            isPressed = false;
+            targetRectTransform.sizeDelta = new Vector2(
+                targetRectTransform.sizeDelta.x,
+                originalHeight
+            );
+        }
     }
 
     private void HandleClick()
