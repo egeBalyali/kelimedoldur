@@ -6,7 +6,8 @@ public class WordTraceSequencer : MonoBehaviour
     [SerializeField] private ParticleSystem traceParticles;
 
     /// <summary>
-    /// Traces around the specified UI RectTransform starting from bottom-left corner clockwise.
+    /// Traces around the specified UI RectTransform starting from bottom-left corner counter-clockwise (Right, Up, Left, Down).
+    /// Destroys this GameObject automatically upon completion.
     /// </summary>
     /// <param name="targetRect">The UI RectTransform of the completed word box.</param>
     /// <param name="duration">Total travel duration in seconds.</param>
@@ -18,18 +19,25 @@ public class WordTraceSequencer : MonoBehaviour
 
     private IEnumerator TracePathRoutine(RectTransform targetRect, float duration)
     {
+        if (targetRect == null)
+        {
+            Destroy(gameObject);
+            yield break;
+        }
+
         // Get four corner positions in world space
         Vector3[] worldCorners = new Vector3[4];
         targetRect.GetWorldCorners(worldCorners);
 
         // UI World Corners Order: 0 = Bottom-Left, 1 = Top-Left, 2 = Top-Right, 3 = Bottom-Right
+        // Counter-clockwise path: Right -> Up -> Left -> Down
         Vector3[] pathPoints = new Vector3[5]
         {
             worldCorners[0], // Bottom-Left
-            worldCorners[1], // Top-Left
-            worldCorners[2], // Top-Right
-            worldCorners[3], // Bottom-Right
-            worldCorners[0]  // Back to Bottom-Left
+            worldCorners[3], // Bottom-Right (Moves RIGHT first)
+            worldCorners[2], // Top-Right    (Moves UP next)
+            worldCorners[1], // Top-Left     (Moves LEFT next)
+            worldCorners[0]  // Bottom-Left  (Moves DOWN back to start)
         };
 
         // Calculate segment lengths to keep speed uniform on rectangular dimensions
@@ -46,7 +54,7 @@ public class WordTraceSequencer : MonoBehaviour
         if (traceParticles != null)
         {
             traceParticles.Clear();
-            traceParticles.Play();
+            traceParticles.Play(true);
         }
 
         float elapsedTime = 0f;
@@ -75,10 +83,28 @@ public class WordTraceSequencer : MonoBehaviour
 
         transform.position = pathPoints[4];
 
-        // Stop emission and let existing trail particles naturally fade out
+        // Stop emission immediately
         if (traceParticles != null)
         {
-            traceParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+            traceParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
+
+        // Destroy instance once path sequence completes
+        Destroy(gameObject);
+    }
+
+    /// <summary>
+    /// Immediately halts the coroutine and destroys the particle instance.
+    /// </summary>
+    public void StopTrace()
+    {
+        StopAllCoroutines();
+
+        if (traceParticles != null)
+        {
+            traceParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
+
+        Destroy(gameObject);
     }
 }

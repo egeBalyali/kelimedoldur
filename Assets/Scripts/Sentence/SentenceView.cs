@@ -20,14 +20,14 @@ public class SentenceView : MonoBehaviour
     [SerializeField] private WordTraceSequencer traceSequencerPrefab;
     [SerializeField] private Transform traceEffectParent; // Where the runtime particle instance is parented. Defaults to sentenceContainer if left empty.
     [SerializeField] private float traceDuration = 0.8f;
+    [Tooltip("Pushes the trace target (and therefore the particle effect) this far toward the camera on Z, so its sort order versus the sentence UI graphics is deterministic instead of coin-flipping when both sit at z=0. Same idea as the -1 z offset used for the click particle in LetterView.")]
+    [SerializeField] private float traceZOffset = -5f;
 
     private readonly Dictionary<int, LetterView> gapViews = new Dictionary<int, LetterView>();
     private readonly List<GameObject> spawned = new List<GameObject>();
     private readonly List<int> gapIndicesInOrder = new List<int>();
 
     // Word-grouping bookkeeping, needed so completed words can be traced.
-    // NOTE: this is pure bookkeeping - it does not add anything to the visual
-    // hierarchy, so it cannot affect layout/spacing.
     private readonly Dictionary<int, List<RectTransform>> wordMemberRects = new Dictionary<int, List<RectTransform>>(); // wordId -> every tile (letter+gap) in that word
     private readonly Dictionary<int, List<int>> wordGapMembers = new Dictionary<int, List<int>>(); // wordId -> gap indices
     private readonly Dictionary<int, int> gapToWordId = new Dictionary<int, int>();
@@ -36,7 +36,7 @@ public class SentenceView : MonoBehaviour
     // Reusable, layout-independent RectTransform used only to hand a bounding box to WordTraceSequencer.
     private RectTransform traceTargetRect;
 
-    // Runtime instance instantiated from traceSequencerPrefab (created lazily, kept active, reused).
+    // Runtime instance instantiated from traceSequencerPrefab (destroyed when complete or interrupted).
     private WordTraceSequencer traceSequencerInstance;
 
     private SentenceData currentSentence;
@@ -105,9 +105,7 @@ public class SentenceView : MonoBehaviour
             }
             else
             {
-                // 3. Instantiate view tiles into active line container - identical to the
-                // original layout. We additionally remember which tiles belong to this word
-                // (for trace-effect bounding box purposes only - it has no visual effect).
+                // 3. Instantiate view tiles into active line container
                 int wordId = nextWordId++;
                 List<RectTransform> memberRects = new List<RectTransform>(token.Count);
                 List<int> gapsInWord = new List<int>();
@@ -203,8 +201,16 @@ public class SentenceView : MonoBehaviour
         return spacer;
     }
 
+    public void StopTraceEffect()
+    {
+        DestroyActiveTraceSequencer();
+    }
+
     private void Clear()
     {
+        DestroyActiveTraceSequencer();
+        DestroyTraceTargetRect();
+
         foreach (GameObject go in spawned)
             if (go != null)
                 Destroy(go);
@@ -222,12 +228,16 @@ public class SentenceView : MonoBehaviour
         currentSentence = null;
     }
 
-    public void SetGapLetter(int rawIndex, char letter)
+    public void SetGapLetter(int rawIndex, char letter, bool suppressTrace = false)
     {
         if (gapViews.TryGetValue(rawIndex, out LetterView view))
         {
             view.SetLetter(letter);
-            TryTraceIfWordComplete(rawIndex);
+
+            if (!suppressTrace)
+            {
+                TryTraceIfWordComplete(rawIndex);
+            }
         }
     }
 
@@ -301,9 +311,10 @@ public class SentenceView : MonoBehaviour
                 return; // filled but wrong - bail out before touching the tracer at all
         }
 
-        // Only past this point do we ever create/reposition the target rect or
-        // start the sequencer, so an incorrect word never reaches TraceWordBox.
-        WordTraceSequencer traceSequencer = GetOrCreateTraceSequencer();
+        // Clean up any previously running particle trace instance before starting a new one
+        DestroyActiveTraceSequencer();
+
+        WordTraceSequencer traceSequencer = InstantiateTraceSequencer();
         if (traceSequencer == null)
             return;
 
@@ -319,27 +330,35 @@ public class SentenceView : MonoBehaviour
     }
 
     /// <summary>
-    /// Lazily instantiates a runtime instance from traceSequencerPrefab and reuses it for every
-    /// subsequent trace. Instantiating (rather than referencing a scene object) sidesteps any
-    /// "GameObject is inactive" issue - Instantiate() always produces an active copy as long as
-    /// the prefab itself is active.
+    /// Instantiates a fresh WordTraceSequencer instance on demand.
     /// </summary>
-    private WordTraceSequencer GetOrCreateTraceSequencer()
+    private WordTraceSequencer InstantiateTraceSequencer()
     {
-        if (traceSequencerInstance != null)
-            return traceSequencerInstance;
-
         if (traceSequencerPrefab == null)
             return null;
 
         Transform parent = traceEffectParent != null ? traceEffectParent : sentenceContainer;
 
         traceSequencerInstance = Instantiate(traceSequencerPrefab, parent);
-
-        if (!traceSequencerInstance.gameObject.activeSelf)
-            traceSequencerInstance.gameObject.SetActive(true);
-
         return traceSequencerInstance;
+    }
+
+    private void DestroyActiveTraceSequencer()
+    {
+        if (traceSequencerInstance != null)
+        {
+            traceSequencerInstance.StopTrace();
+            traceSequencerInstance = null;
+        }
+    }
+
+    private void DestroyTraceTargetRect()
+    {
+        if (traceTargetRect != null)
+        {
+            Destroy(traceTargetRect.gameObject);
+            traceTargetRect = null;
+        }
     }
 
     /// <summary>
@@ -378,7 +397,7 @@ public class SentenceView : MonoBehaviour
     {
         if (members == null || members.Count == 0) return;
 
-        // 1. Force unity layout groups to update sizes before calculating world corners
+        // Force unity layout groups to update sizes before calculating world corners
         Canvas.ForceUpdateCanvases();
 
         RectTransform parentRect = target.parent as RectTransform;
@@ -421,13 +440,12 @@ public class SentenceView : MonoBehaviour
 
         if (first) return;
 
-        // 2. Set target rect dimensions and placement in parent local space
         target.sizeDelta = maxLocal - minLocal;
 
-        // Set pivot to (0,0) and anchor to match local coordinates precisely
         target.anchorMin = new Vector2(0.5f, 0.5f);
         target.anchorMax = new Vector2(0.5f, 0.5f);
         target.pivot = Vector2.zero;
-        target.anchoredPosition = minLocal;
+
+        target.anchoredPosition3D = new Vector3(minLocal.x, minLocal.y, traceZOffset);
     }
 }

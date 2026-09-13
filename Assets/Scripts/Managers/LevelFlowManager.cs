@@ -85,6 +85,7 @@ public class LevelFlowManager : MonoBehaviour
     {
         if (!CanGoNext) return;
 
+
         currentSentenceIndex++;
         ShowCurrentSentence();
     }
@@ -165,7 +166,8 @@ public class LevelFlowManager : MonoBehaviour
 
         foreach (var kvp in fills)
         {
-            sentenceView.SetGapLetter(kvp.Key, kvp.Value.Letter);
+            // Suppress trace effects when re-populating gaps during sentence navigation
+            sentenceView.SetGapLetter(kvp.Key, kvp.Value.Letter, suppressTrace: true);
         }
     }
 
@@ -218,7 +220,8 @@ public class LevelFlowManager : MonoBehaviour
 
     private void PlaceLetter(int gapIndex, LetterView poolLetter)
     {
-        sentenceView.SetGapLetter(gapIndex, poolLetter.Letter);
+        // Pass suppressTrace: IsLastSentence so it won't trace on the final sentence
+        sentenceView.SetGapLetter(gapIndex, poolLetter.Letter, suppressTrace: IsLastSentence);
 
         if (!sentenceGapFills.TryGetValue(currentSentenceIndex, out var fills))
         {

@@ -16,8 +16,8 @@ using UnityEngine;
 public class TopLetterView : LetterView
 {
     [Header("Top Letter Display")]
-    [Tooltip("TMPro text used to display the letter glyph. The Image inherited from LetterView is left untouched and acts as the static background.")]
-    [SerializeField] private TMP_Text letterText;
+    [Tooltip("TMPro text element(s) used to display the letter glyph (e.g. a main + shadow/outline layer). The Image inherited from LetterView is left untouched and acts as the static background.")]
+    [SerializeField] private TMP_Text[] letterTexts;
 
     [Tooltip("Text shown when the tile is empty (e.g. an empty string, an underscore, etc).")]
     [SerializeField] private string emptyText = "";
@@ -29,8 +29,7 @@ public class TopLetterView : LetterView
         Letter = letter;
         IsEmpty = false;
 
-        if (letterText != null)
-            letterText.text = letter.ToString();
+        SetAllTexts(letter.ToString());
     }
 
     public override void SetEmpty()
@@ -38,7 +37,18 @@ public class TopLetterView : LetterView
         Letter = '\0';
         IsEmpty = true;
 
-        if (letterText != null)
-            letterText.text = emptyText;
+        SetAllTexts(emptyText);
+    }
+
+    private void SetAllTexts(string value)
+    {
+        if (letterTexts == null)
+            return;
+
+        for (int i = 0; i < letterTexts.Length; i++)
+        {
+            if (letterTexts[i] != null)
+                letterTexts[i].text = value;
+        }
     }
 }
