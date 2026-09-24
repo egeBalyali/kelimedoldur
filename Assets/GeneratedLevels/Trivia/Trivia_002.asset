@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82206f1a42f74d3448420578b842a756, type: 3}
+  m_Name: Trivia_002
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  category: 3
+  difficulty: 0
+  sentences:
+  - rawSentence: WH_ICH S_PORT US_ES A BA_T A_ND B_ASES?
+  - rawSentence: _B_A_S_E_B_A_L_L
+  letters: 49004500410054004c0041004c0045004e0042004100500053004200

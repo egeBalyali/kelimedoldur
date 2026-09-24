@@ -141,7 +141,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 7263751119369942283, guid: a2c722f84c843ac4daa892d7308d5d01, type: 3}
-  m_Type: 1
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -251,7 +251,7 @@ MonoBehaviour:
   canvasGroup: {fileID: 7165469472382124403}
   activeIndicator: {fileID: 5273832810960306182}
   clickParticlePrefab: {fileID: 4509978723830917449, guid: 452334667b0cd01419eaac44a54cddea, type: 3}
-  spriteLibrary: {fileID: 11400000, guid: e9b1a96d0d5de3b489c56a8e674d328c, type: 2}
+  spriteLibrary: {fileID: 11400000, guid: d4be6637daa00e640a50822f8df9696e, type: 2}
   emptySprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   targetRectTransform: {fileID: 3133954107362018222}
   pressYHeightOffset: 15

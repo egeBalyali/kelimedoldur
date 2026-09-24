@@ -1,0 +1,871 @@
+fileFormatVersion: 2
+guid: fb650f112bea2b243ac3e5fa6e952035
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 7553313087208297595
+    second: BotLetters_0
+  - first:
+      213: -2716755058189963832
+    second: BotLetters_1
+  - first:
+      213: 3757336557428131633
+    second: BotLetters_2
+  - first:
+      213: -2222310658069266540
+    second: BotLetters_3
+  - first:
+      213: 730069986835225415
+    second: BotLetters_4
+  - first:
+      213: -4323614104401898495
+    second: BotLetters_5
+  - first:
+      213: -5232213487801182001
+    second: BotLetters_6
+  - first:
+      213: -3964605331562635291
+    second: BotLetters_7
+  - first:
+      213: 1315722901040271447
+    second: BotLetters_8
+  - first:
+      213: 154401231503000059
+    second: BotLetters_9
+  - first:
+      213: 7883532673090513219
+    second: BotLetters_10
+  - first:
+      213: 2760028778901464517
+    second: BotLetters_11
+  - first:
+      213: 3976785123839029325
+    second: BotLetters_12
+  - first:
+      213: 4624781076652692465
+    second: BotLetters_13
+  - first:
+      213: -4294884475811517043
+    second: BotLetters_14
+  - first:
+      213: -6486899715915590702
+    second: BotLetters_15
+  - first:
+      213: -2428141473036072516
+    second: BotLetters_16
+  - first:
+      213: -6719286133246989227
+    second: BotLetters_17
+  - first:
+      213: 4216637956504235180
+    second: BotLetters_18
+  - first:
+      213: -3698928360909081621
+    second: BotLetters_19
+  - first:
+      213: -6918164474380953536
+    second: BotLetters_20
+  - first:
+      213: 2930912705831673880
+    second: BotLetters_21
+  - first:
+      213: 1540933417244081125
+    second: BotLetters_22
+  - first:
+      213: 8504034615137955399
+    second: BotLetters_23
+  - first:
+      213: -5228581341362218360
+    second: BotLetters_24
+  - first:
+      213: -3073892482348158199
+    second: BotLetters_25
+  - first:
+      213: 6303526432317877030
+    second: BotLetters_26
+  - first:
+      213: 1398824168152296507
+    second: BotLetters_27
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BotLetters_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 587
+        width: 186
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b741c50db32c2d860800000000000000
+      internalID: 7553313087208297595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_1
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 587
+        width: 181
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cd67d62ba52c4ad0800000000000000
+      internalID: -2716755058189963832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_2
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 587
+        width: 181
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 137c71711bdb42430800000000000000
+      internalID: 3757336557428131633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_3
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 587
+        width: 181
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49f77351b34c821e0800000000000000
+      internalID: -2222310658069266540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_4
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 587
+        width: 181
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74bdc72f8cab12a00800000000000000
+      internalID: 730069986835225415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_5
+      rect:
+        serializedVersion: 2
+        x: 1005
+        y: 587
+        width: 181
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 104914921ef6ff3c0800000000000000
+      internalID: -4323614104401898495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_6
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 587
+        width: 177
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc85a96ed817367b0800000000000000
+      internalID: -5232213487801182001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_7
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 393
+        width: 180
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5efd691d474eaf8c0800000000000000
+      internalID: -3964605331562635291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_8
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 393
+        width: 181
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7501a5be103624210800000000000000
+      internalID: 1315722901040271447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_9
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 393
+        width: 181
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf18e9c1a1b842200800000000000000
+      internalID: 154401231503000059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_10
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 393
+        width: 181
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 349eeba823fe76d60800000000000000
+      internalID: 7883532673090513219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_11
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 393
+        width: 181
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c5e6481d879d4620800000000000000
+      internalID: 2760028778901464517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_12
+      rect:
+        serializedVersion: 2
+        x: 1005
+        y: 393
+        width: 181
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d40bb7e0001603730800000000000000
+      internalID: 3976785123839029325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_13
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 393
+        width: 177
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f315d5d2e58e2040800000000000000
+      internalID: 4624781076652692465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_14
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 199
+        width: 180
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8d2ae313518564c0800000000000000
+      internalID: -4294884475811517043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_15
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 199
+        width: 180
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d3d443d317e9f5a0800000000000000
+      internalID: -6486899715915590702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_16
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 199
+        width: 181
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb98a43f1328d4ed0800000000000000
+      internalID: -2428141473036072516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_17
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 199
+        width: 180
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55cea93bcdc40c2a0800000000000000
+      internalID: -6719286133246989227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_18
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 199
+        width: 181
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cac2dd771e1848a30800000000000000
+      internalID: 4216637956504235180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_19
+      rect:
+        serializedVersion: 2
+        x: 1005
+        y: 199
+        width: 181
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be37566e044caacc0800000000000000
+      internalID: -3698928360909081621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_20
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 199
+        width: 177
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 048dbc6801ebdff90800000000000000
+      internalID: -6918164474380953536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 186
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 810a6cac391bca820800000000000000
+      internalID: 2930912705831673880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_22
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 5
+        width: 181
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ebbc5d57ce726510800000000000000
+      internalID: 1540933417244081125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_23
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 5
+        width: 181
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74e6ce81d66640670800000000000000
+      internalID: 8504034615137955399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_24
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 5
+        width: 180
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88a9ed4e8f85077b0800000000000000
+      internalID: -5228581341362218360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_25
+      rect:
+        serializedVersion: 2
+        x: 805
+        y: 5
+        width: 181
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 903f4efc2175755d0800000000000000
+      internalID: -3073892482348158199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_26
+      rect:
+        serializedVersion: 2
+        x: 1005
+        y: 5
+        width: 180
+        height: 176
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 62ba79684ef9a7750800000000000000
+      internalID: 6303526432317877030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BotLetters_27
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 6
+        width: 177
+        height: 175
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3ce2fd6b2f996310800000000000000
+      internalID: 1398824168152296507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      BotLetters_0: 7553313087208297595
+      BotLetters_1: -2716755058189963832
+      BotLetters_10: 7883532673090513219
+      BotLetters_11: 2760028778901464517
+      BotLetters_12: 3976785123839029325
+      BotLetters_13: 4624781076652692465
+      BotLetters_14: -4294884475811517043
+      BotLetters_15: -6486899715915590702
+      BotLetters_16: -2428141473036072516
+      BotLetters_17: -6719286133246989227
+      BotLetters_18: 4216637956504235180
+      BotLetters_19: -3698928360909081621
+      BotLetters_2: 3757336557428131633
+      BotLetters_20: -6918164474380953536
+      BotLetters_21: 2930912705831673880
+      BotLetters_22: 1540933417244081125
+      BotLetters_23: 8504034615137955399
+      BotLetters_24: -5228581341362218360
+      BotLetters_25: -3073892482348158199
+      BotLetters_26: 6303526432317877030
+      BotLetters_27: 1398824168152296507
+      BotLetters_3: -2222310658069266540
+      BotLetters_4: 730069986835225415
+      BotLetters_5: -4323614104401898495
+      BotLetters_6: -5232213487801182001
+      BotLetters_7: -3964605331562635291
+      BotLetters_8: 1315722901040271447
+      BotLetters_9: 154401231503000059
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

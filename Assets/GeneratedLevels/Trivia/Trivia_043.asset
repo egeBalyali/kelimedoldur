@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82206f1a42f74d3448420578b842a756, type: 3}
+  m_Name: Trivia_043
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  category: 4
+  difficulty: 2
+  sentences:
+  - rawSentence: WH_ICH JA_ZZ _IC_ON WAS _KN_OW_N AS BIRD
+  - rawSentence: C_H_A_R_L_I_E P_A_R_K_E_R
+  letters: 4e00450049004800490049005a0045004f0052004c00520041004b004b00520041004f00

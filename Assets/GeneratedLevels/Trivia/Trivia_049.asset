@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82206f1a42f74d3448420578b842a756, type: 3}
+  m_Name: Trivia_049
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  category: 0
+  difficulty: 2
+  sentences:
+  - rawSentence: WHO WR_OTE THE NO_VEL B_R_AVE _NEW _WO_RLD
+  - rawSentence: _A_L_D_O_U_S _H_U_X_L_E_Y
+  letters: 4f004f00570041004c004800440052004e0058004c0059005500530052005600450041005500

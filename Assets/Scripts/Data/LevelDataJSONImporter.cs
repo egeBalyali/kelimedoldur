@@ -13,6 +13,7 @@ using UnityEngine;
 ///   "levels": [
 ///     {
 ///       "name": "Level_01",
+///       "category": "General Knowledge",
 ///       "sentences": [ "TH_e C_a T_s", "A B_i G_g D_o G_g" ]
 ///     }
 ///   ]
@@ -21,14 +22,14 @@ using UnityEngine;
 /// Rules:
 /// - Each string in "sentences" becomes one SentenceData stage, in order.
 ///   Use '_X' where '_' is the gap and 'X' is the expected answer character.
-///   Sentences typically build up a question, with the last sentence being the answer
-///   (e.g. "WH_aT I_s T_hE ", "C_aP_iITAL OF T_u_r_kEY", "_a_n_k_a_r_a").
+///   Exactly two nonempty sentences are required: the whole question, then the answer.
 /// - LevelData.letters is NOT read from JSON anymore. It is derived automatically from
 ///   every sentence's gap answer letters, in order, across all sentences in the level.
 ///   Duplicates are kept intentionally: each gap needs its own letter tile, so a repeated
 ///   letter (e.g. the A's in "ANKARA") produces multiple tile entries.
 /// - A legacy "letters" field is still tolerated in the JSON for backwards compatibility,
 ///   but it is ignored (and a warning is logged if present) since it can go stale.
+/// - Optional "letterOrder" preserves an authored order and must contain exactly the required tiles.
 /// </summary>
 public static class LevelDataJsonImporter
 {
@@ -38,6 +39,9 @@ public static class LevelDataJsonImporter
     private class LevelJson
     {
         public string name;
+        public string category;
+        public string difficulty;
+        public string letterOrder;
 
         [Obsolete("No longer used. LevelData.letters is now derived automatically from the sentences' gap answers.")]
         public string letters;
@@ -92,6 +96,46 @@ public static class LevelDataJsonImporter
             return;
         }
 
+        // Validate the entire batch before modifying any existing assets.
+        foreach (LevelJson level in parsed.levels)
+        {
+            if (level == null || !LevelCategories.TryParse(level.category, out _))
+            {
+                Debug.LogError($"LevelDataJsonImporter: invalid category on '{level?.name}'. " +
+                    "Use History, Science, Sports, Music, Movies, Geography, or General Knowledge.");
+                return;
+            }
+            if (level.sentences == null || level.sentences.Length != 2 ||
+                string.IsNullOrWhiteSpace(level.sentences[0]) || string.IsNullOrWhiteSpace(level.sentences[1]))
+            {
+                Debug.LogError($"LevelDataJsonImporter: '{level.name}' requires exactly two pages: question and answer.");
+                return;
+            }
+            if (!string.IsNullOrWhiteSpace(level.difficulty) &&
+                (!Enum.TryParse(level.difficulty, true, out LevelDifficulty difficulty) ||
+                 !Enum.IsDefined(typeof(LevelDifficulty), difficulty)))
+            {
+                Debug.LogError($"LevelDataJsonImporter: invalid difficulty on '{level.name}'. Use Easy, Medium, or Hard.");
+                return;
+            }
+        }
+
+        foreach (LevelJson level in parsed.levels)
+        {
+            if (level.letterOrder == null) continue;
+            var required = new System.Text.StringBuilder();
+            foreach (string raw in level.sentences)
+            {
+                var sentence = new SentenceData();
+                sentence.SetRawSentence(raw);
+                required.Append(sentence.GetGapLetters());
+            }
+            if (!LevelLetterOrder.IsValid(level.letterOrder, required.ToString()))
+            {
+                Debug.LogError($"LevelDataJsonImporter: '{level.name}' letterOrder must contain exactly its gap letters, including duplicates.");
+                return;
+            }
+        }
         EnsureFolderExists(outputFolder);
 
         var createdLevels = new LevelData[parsed.levels.Length];
@@ -142,6 +186,10 @@ public static class LevelDataJsonImporter
 
     private static void PopulateLevelData(LevelData levelData, LevelJson levelJson)
     {
+        LevelCategories.TryParse(levelJson.category, out LevelCategory category);
+        levelData.SetCategory(category);
+        Enum.TryParse(levelJson.difficulty, true, out LevelDifficulty difficulty);
+        levelData.SetDifficulty(difficulty);
         levelData.ClearSentences();
         levelData.ClearLetters(); // letters are re-derived below from the sentences' gaps
 
@@ -158,6 +206,7 @@ public static class LevelDataJsonImporter
                 levelData.AddSentence(sentenceRaw);
             }
         }
+        if (levelJson.letterOrder != null) levelData.letters = levelJson.letterOrder.ToCharArray();
     }
 
     private static void BuildOrUpdateSequenceAsset(string folder, LevelData[] levels)

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82206f1a42f74d3448420578b842a756, type: 3}
+  m_Name: Trivia_038
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  category: 6
+  difficulty: 2
+  sentences:
+  - rawSentence: NAME A COU_N_T_R_Y WITH D_OUB_LE HEADED E_AG_LE IN ITS FLAG
+  - rawSentence: _A_L_B_A_N_I_A
+  letters: 42004c004f005200540041004c004e0041004900410041004e0059004c00

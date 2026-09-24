@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82206f1a42f74d3448420578b842a756, type: 3}
+  m_Name: Trivia_018
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  category: 2
+  difficulty: 1
+  sentences:
+  - rawSentence: _WH_ICH E_L_E_MEN_T _HAS THE S_YM_BOL AU
+  - rawSentence: _G_O_L_D
+  letters: 49004d00420047004f004c0044004c0045005400590057004800

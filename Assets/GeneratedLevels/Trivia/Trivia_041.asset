@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82206f1a42f74d3448420578b842a756, type: 3}
+  m_Name: Trivia_041
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  category: 5
+  difficulty: 2
+  sentences:
+  - rawSentence: _W_HO DIRE_CTED _S_P_IR_ITED _A_W_AY?
+  - rawSentence: _H_A_Y_A_O M_I_Y_A_Z_A_K_I
+  letters: 5000490043004f004800490049004100590048005300410041004b0041005a00590049005700410057004100

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82206f1a42f74d3448420578b842a756, type: 3}
+  m_Name: Trivia_020
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  category: 5
+  difficulty: 1
+  sentences:
+  - rawSentence: IN THE _M_ATR_IX WH_ICH _C_OLOR PI_LL DO_ES NEO TAKE
+  - rawSentence: _R_E_D
+  letters: 4500490043004f00440052004100490045004c004d00

@@ -43,6 +43,7 @@ public class SentenceView : MonoBehaviour
     private int activeGapIndex = -1;
 
     public event Action<int> GapPressed;
+    public event Action CorrectWordTraceStarted;
 
 
     [Header("Last Sentence")]
@@ -82,6 +83,7 @@ public class SentenceView : MonoBehaviour
 
         int currentLineIndex = 0;
         int currentLineCharCount = 0;
+        int pendingSpaces = 0;
         Transform currentLineTransform = CreateNewLineContainer();
 
         foreach (List<int> token in tokens)
@@ -89,12 +91,18 @@ public class SentenceView : MonoBehaviour
             bool isSpace = token.Count == 1 && displayChars[token[0]] == ' ';
             int tokenLength = token.Count;
 
-            // Skip leading space on a brand new line
-            if (isSpace && currentLineCharCount == 0)
+            // Defer spaces until the next word fits on this same line.
+            // Leading and trailing spaces never create layout elements.
+            if (isSpace)
+            {
+                if (currentLineCharCount > 0)
+                    pendingSpaces += tokenLength;
                 continue;
+            }
 
             // 2. Line Wrap Check: If token exceeds line budget, move to next line container
-            if (!isSpace && (currentLineCharCount + tokenLength > maxCharsPerLine))
+            if (currentLineCharCount > 0 &&
+                currentLineCharCount + pendingSpaces + tokenLength > maxCharsPerLine)
             {
                 currentLineIndex++;
                 if (currentLineIndex >= maxLines)
@@ -105,53 +113,52 @@ public class SentenceView : MonoBehaviour
 
                 currentLineTransform = CreateNewLineContainer();
                 currentLineCharCount = 0;
+                pendingSpaces = 0;
             }
 
-            if (isSpace)
-            {
+            for (int i = 0; i < pendingSpaces; i++)
                 spawned.Add(CreateSpacer(currentLineTransform));
-            }
-            else
+            currentLineCharCount += pendingSpaces;
+            pendingSpaces = 0;
+
+            // 3. Instantiate view tiles into active line container
+            int wordId = nextWordId++;
+            List<RectTransform> memberRects = new List<RectTransform>(token.Count);
+            List<int> gapsInWord = new List<int>();
+
+            foreach (int rawIndex in token)
             {
-                // 3. Instantiate view tiles into active line container
-                int wordId = nextWordId++;
-                List<RectTransform> memberRects = new List<RectTransform>(token.Count);
-                List<int> gapsInWord = new List<int>();
+                char c = displayChars[rawIndex];
 
-                foreach (int rawIndex in token)
+                if (c == '_')
                 {
-                    char c = displayChars[rawIndex];
+                    LetterView gap = LetterView.CreateEmpty(letterPrefab, currentLineTransform);
+                    gap.SetInteractable(true);
+                    int capturedIndex = rawIndex;
+                    gap.Clicked += _ => GapPressed?.Invoke(capturedIndex);
 
-                    if (c == '_')
-                    {
-                        LetterView gap = LetterView.CreateEmpty(letterPrefab, currentLineTransform);
-                        gap.SetInteractable(true);
-                        int capturedIndex = rawIndex;
-                        gap.Clicked += _ => GapPressed?.Invoke(capturedIndex);
+                    gapViews[rawIndex] = gap;
+                    gapIndicesInOrder.Add(rawIndex);
+                    spawned.Add(gap.gameObject);
 
-                        gapViews[rawIndex] = gap;
-                        gapIndicesInOrder.Add(rawIndex);
-                        spawned.Add(gap.gameObject);
-
-                        gapsInWord.Add(rawIndex);
-                        gapToWordId[rawIndex] = wordId;
-                        memberRects.Add(gap.transform as RectTransform);
-                    }
-                    else
-                    {
-                        LetterView fixedLetter = LetterView.Create(letterPrefab, currentLineTransform, c);
-                        fixedLetter.SetInteractable(false);
-                        spawned.Add(fixedLetter.gameObject);
-                        memberRects.Add(fixedLetter.transform as RectTransform);
-                    }
+                    gapsInWord.Add(rawIndex);
+                    gapToWordId[rawIndex] = wordId;
+                    memberRects.Add(gap.transform as RectTransform);
                 }
-
-                wordMemberRects[wordId] = memberRects;
-
-                // Only words that actually contain gaps need to be tracked for completion.
-                if (gapsInWord.Count > 0)
-                    wordGapMembers[wordId] = gapsInWord;
+                else
+                {
+                    LetterView fixedLetter = LetterView.Create(letterPrefab, currentLineTransform, c);
+                    fixedLetter.SetInteractable(false);
+                    spawned.Add(fixedLetter.gameObject);
+                    memberRects.Add(fixedLetter.transform as RectTransform);
+                }
             }
+
+            wordMemberRects[wordId] = memberRects;
+
+            // Only words that actually contain gaps need to be tracked for completion.
+            if (gapsInWord.Count > 0)
+                wordGapMembers[wordId] = gapsInWord;
 
             currentLineCharCount += tokenLength;
         }
@@ -338,6 +345,7 @@ public class SentenceView : MonoBehaviour
 
         PositionTraceTargetAroundWord(target, members);
         traceSequencer.TraceWordBox(target, traceDuration);
+        CorrectWordTraceStarted?.Invoke();
     }
 
     /// <summary>

@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7180979698907315761
 RectTransform:
   m_ObjectHideFlags: 0
@@ -154,7 +154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5317658465050956556
 RectTransform:
   m_ObjectHideFlags: 0
@@ -406,7 +406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
-  m_Material: {fileID: 2100000, guid: 6a463f7d0602f844ba28393af5c5c71c, type: 2}
+  m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -414,7 +414,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -5687111206616486697, guid: d95bf3a7a482e804e8e3b2b18b58ca48, type: 3}
+  m_Sprite: {fileID: 2305279692557062188, guid: a6658ae10318d4c4cb9cac0d54cb4ddb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -540,10 +540,11 @@ MonoBehaviour:
   canvasGroup: {fileID: 7165469472382124403}
   activeIndicator: {fileID: 5273832810960306182}
   clickParticlePrefab: {fileID: 4509978723830917449, guid: 452334667b0cd01419eaac44a54cddea, type: 3}
-  spriteLibrary: {fileID: 11400000, guid: fa2a9004a4b3e9d40afb5d24c640c5e0, type: 2}
-  emptySprite: {fileID: -4484362866910955720, guid: c4859698e0122964c955ccadc933e5da, type: 3}
+  spriteLibrary: {fileID: 11400000, guid: d4be6637daa00e640a50822f8df9696e, type: 2}
+  emptySprite: {fileID: 1079814508905848070, guid: d982d65ecd8084448b873545e1ba70de, type: 3}
   targetRectTransform: {fileID: 3133954107362018222}
   pressYHeightOffset: 0
+  useLetterSprites: 1
   letterTexts:
   - {fileID: 3900360830426768769}
   - {fileID: 5989970728290047258}

@@ -1,16 +1,37 @@
 {
   "levels": [
     {
-      "name": "Level_01",
-      "sentences": ["WH_aT I_s T_hE ", "C_aP_iTAL OF T_u_r_kEY", "_a_n_k_a_r_a"]
+      "name": "Trivia_001",
+      "category": "Music",
+      "difficulty": "Easy",
+      "question": "HOW MANY STRINGS DOES A STANDARD GUITAR HAVE",
+      "answer": "SIX",
+      "sentences": [
+        "HOW MA_NY STRINGS DOES A STAN_DARD GUITAR HAVE",
+        "_S_I_X"
+      ]
     },
     {
-      "name": "Level_02",
-      "sentences": ["H_oW M_aNY L_eGS", "D_oES A S_pIDER H_aVE", "_e_i_g_h_t"]
+      "name": "Trivia_002",
+      "category": "Sports",
+      "difficulty": "Easy",
+      "question": "WHICH SPORT USES A BAT AND BASES",
+      "answer": "BASEBALL",
+      "sentences": [
+        "WH_ICH SPORT US_ES A BAT AND BASES",
+        "_B_A_S_E_B_A_L_L"
+      ]
     },
     {
-      "name": "Level_03",
-      "sentences": ["W_hAT C_oLOR I_s T_hE S_kY", "_b_l_u_e"]
+      "name": "Trivia_003",
+      "category": "Geography",
+      "difficulty": "Easy",
+      "question": "WHAT IS THE CAPITAL OF FRANCE",
+      "answer": "PARIS",
+      "sentences": [
+        "WH_AT IS THE CAP_ITAL OF FRANCE",
+        "_P_A_R_I_S"
+      ]
     }
   ]
 }

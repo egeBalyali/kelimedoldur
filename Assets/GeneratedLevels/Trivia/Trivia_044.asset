@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82206f1a42f74d3448420578b842a756, type: 3}
+  m_Name: Trivia_044
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  category: 3
+  difficulty: 1
+  sentences:
+  - rawSentence: IN GO_LF WH_AT _IS _T_WO _U_ND_ER P_AR CAL_LED
+  - rawSentence: _E_A_G_L_E
+  letters: 490057004700450054005500450041004c004e0041004c004c0041004500

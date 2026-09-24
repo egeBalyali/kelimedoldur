@@ -2,6 +2,49 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Explicit values keep existing serialized levels in General Knowledge.
+public enum LevelCategory
+{
+    GeneralKnowledge = 0,
+    History = 1,
+    Science = 2,
+    Sports = 3,
+    Music = 4,
+    Movies = 5,
+    Geography = 6
+}
+
+public enum LevelDifficulty { Easy = 0, Medium = 1, Hard = 2 }
+
+public static class LevelCategories
+{
+    public static readonly LevelCategory[] All =
+    {
+        LevelCategory.History, LevelCategory.Science, LevelCategory.Sports,
+        LevelCategory.Music, LevelCategory.Movies, LevelCategory.Geography,
+        LevelCategory.GeneralKnowledge
+    };
+
+    public static string DisplayName(LevelCategory category) =>
+        category == LevelCategory.GeneralKnowledge ? "General Knowledge" : category.ToString();
+
+    public static bool TryParse(string value, out LevelCategory category)
+    {
+        category = LevelCategory.GeneralKnowledge;
+        if (string.IsNullOrWhiteSpace(value)) return true;
+        foreach (LevelCategory candidate in All)
+        {
+            if (string.Equals(value.Trim(), DisplayName(candidate), StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(value.Trim(), candidate.ToString(), StringComparison.OrdinalIgnoreCase))
+            {
+                category = candidate;
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
 /// <summary>
 /// One sentence/stage within a level.
 /// Filled characters are known letters or spaces; '_' marks a slot
@@ -69,10 +112,35 @@ public class SentenceData
         return result.ToArray();
     }
 
+    /// <summary>Gaps in whole words whose every blank is filled correctly. Matches SentenceView's space-delimited words.</summary>
+    public HashSet<int> GetCorrectWordGapIndices(IReadOnlyDictionary<int, char> filledLetters)
+    {
+        EnsureParsed();
+        var preserved = new HashSet<int>();
+        for (int start = 0; start < displayCharacters.Length;)
+        {
+            if (displayCharacters[start] == ' ') { start++; continue; }
+            int end = start;
+            bool correct = true;
+            while (end < displayCharacters.Length && displayCharacters[end] != ' ')
+            {
+                if (displayCharacters[end] == '_' &&
+                    (filledLetters == null || !filledLetters.TryGetValue(end, out char letter) || !IsCorrect(end, letter)))
+                    correct = false;
+                end++;
+            }
+            if (correct)
+                for (int i = start; i < end; i++)
+                    if (displayCharacters[i] == '_') preserved.Add(i);
+            start = end;
+        }
+        return preserved;
+    }
+
     /// <summary>
     /// Returns every gap "answer" letter used in this sentence (the char that was written
     /// right after each '_' in the raw string), in the order the gaps appear. Duplicates are
-    /// kept intentionally — each gap consumes its own letter tile, even if the same letter
+    /// kept intentionally â€” each gap consumes its own letter tile, even if the same letter
     /// is used more than once (e.g. the two A's in "_a_n_k_a_r_a"). Used to auto-populate the
     /// level's letter pool so authors don't have to keep it in sync by hand.
     /// </summary>
@@ -170,6 +238,25 @@ public class SentenceData
 [CreateAssetMenu(fileName = "LevelData", menuName = "WordGame/Level Data")]
 public class LevelData : ScriptableObject
 {
+    [SerializeField] private LevelCategory category = LevelCategory.GeneralKnowledge;
+    public LevelCategory Category => category;
+    [SerializeField] private LevelDifficulty difficulty = LevelDifficulty.Easy;
+    public LevelDifficulty Difficulty => difficulty;
+
+    public void SetDifficulty(LevelDifficulty value)
+    {
+        if (!Enum.IsDefined(typeof(LevelDifficulty), value))
+            throw new ArgumentOutOfRangeException(nameof(value));
+        difficulty = value;
+    }
+
+    public void SetCategory(LevelCategory value)
+    {
+        if (!Enum.IsDefined(typeof(LevelCategory), value))
+            throw new ArgumentOutOfRangeException(nameof(value));
+        category = value;
+    }
+
     [Tooltip("Stages of this level, played in order.")]
     [SerializeField] private List<SentenceData> sentences = new List<SentenceData>();
 
@@ -248,7 +335,7 @@ public class LevelData : ScriptableObject
 
     /// <summary>
     /// Appends every gap answer letter from the given sentence onto <see cref="letters"/>, in
-    /// order. Duplicates are intentional and expected — every gap needs its own letter tile,
+    /// order. Duplicates are intentional and expected â€” every gap needs its own letter tile,
     /// even if the letter already appears elsewhere in the pool.
     /// </summary>
     private void RegisterLettersFromSentence(SentenceData sentence)

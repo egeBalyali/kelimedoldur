@@ -1,0 +1,554 @@
+{
+  "levels": [
+    {
+      "name": "Trivia_001",
+      "category": "Music",
+      "difficulty": "Easy",
+      "question": "HOW MANY STRINGS DOES A STANDARD GUITAR HAVE",
+      "answer": "SIX",
+      "sentences": [
+        "HOW MA_NY STRINGS DOES A STAN_DARD GUITAR HAVE",
+        "_S_I_X"
+      ]
+    },
+    {
+      "name": "Trivia_002",
+      "category": "Sports",
+      "difficulty": "Easy",
+      "question": "WHICH SPORT USES A BAT AND BASES",
+      "answer": "BASEBALL",
+      "sentences": [
+        "WH_ICH SPORT US_ES A BAT AND BASES",
+        "_B_A_S_E_B_A_L_L"
+      ]
+    },
+    {
+      "name": "Trivia_003",
+      "category": "Geography",
+      "difficulty": "Easy",
+      "question": "WHAT IS THE CAPITAL OF FRANCE",
+      "answer": "PARIS",
+      "sentences": [
+        "WH_AT IS THE CAP_ITAL OF FRANCE",
+        "_P_A_R_I_S"
+      ]
+    },
+    {
+      "name": "Trivia_004",
+      "category": "Science",
+      "difficulty": "Easy",
+      "question": "WHICH PLANET IS KNOWN AS THE RED PLANET",
+      "answer": "MARS",
+      "sentences": [
+        "WH_ICH PLANET IS KN_OWN AS THE RED PLANET",
+        "_M_A_R_S"
+      ]
+    },
+    {
+      "name": "Trivia_005",
+      "category": "History",
+      "difficulty": "Easy",
+      "question": "WHAT CITY GAVE THE ROMAN EMPIRE ITS NAME",
+      "answer": "ROME",
+      "sentences": [
+        "WH_AT CITY GAVE THE RO_MAN EMPIRE ITS NAME",
+        "_R_O_M_E"
+      ]
+    },
+    {
+      "name": "Trivia_006",
+      "category": "Movies",
+      "difficulty": "Easy",
+      "question": "WHAT IS THE COWBOY CALLED IN TOY STORY",
+      "answer": "WOODY",
+      "sentences": [
+        "WH_AT IS THE COWBOY CAL_LED IN TOY STORY",
+        "_W_O_O_D_Y"
+      ]
+    },
+    {
+      "name": "Trivia_007",
+      "category": "General Knowledge",
+      "difficulty": "Easy",
+      "question": "HOW MANY SIDES DOES A TRIANGLE HAVE",
+      "answer": "THREE",
+      "sentences": [
+        "HOW MA_NY SIDES DO_ES A TRIANGLE HAVE",
+        "_T_H_R_E_E"
+      ]
+    },
+    {
+      "name": "Trivia_008",
+      "category": "Music",
+      "difficulty": "Easy",
+      "question": "WHAT COLOR ARE MOST KEYS ON A PIANO",
+      "answer": "WHITE",
+      "sentences": [
+        "WH_AT COLOR ARE MO_ST KEYS ON A PIANO",
+        "_W_H_I_T_E"
+      ]
+    },
+    {
+      "name": "Trivia_009",
+      "category": "Sports",
+      "difficulty": "Easy",
+      "question": "HOW MANY RINGS ARE ON THE OLYMPIC FLAG",
+      "answer": "FIVE",
+      "sentences": [
+        "HOW MA_NY RINGS ARE ON THE OLY_MPIC FLAG",
+        "_F_I_V_E"
+      ]
+    },
+    {
+      "name": "Trivia_010",
+      "category": "Geography",
+      "difficulty": "Easy",
+      "question": "WHICH COUNTRY IS HOME TO THE EIFFEL TOWER",
+      "answer": "FRANCE",
+      "sentences": [
+        "WH_ICH COUNTRY IS HO_ME TO THE EIFFEL TOWER",
+        "_F_R_A_N_C_E"
+      ]
+    },
+    {
+      "name": "Trivia_011",
+      "category": "Science",
+      "difficulty": "Easy",
+      "question": "WHAT GAS DO HUMANS NEED TO BREATHE",
+      "answer": "OXYGEN",
+      "sentences": [
+        "WH_AT GAS DO HUMANS NE_ED TO BREATHE",
+        "_O_X_Y_G_E_N"
+      ]
+    },
+    {
+      "name": "Trivia_012",
+      "category": "History",
+      "difficulty": "Easy",
+      "question": "IN WHICH COUNTRY WERE THE PYRAMIDS AT GIZA BUILT",
+      "answer": "EGYPT",
+      "sentences": [
+        "IN WH_ICH COUNTRY WERE THE PYRA_MIDS AT GIZA BUILT",
+        "_E_G_Y_P_T"
+      ]
+    },
+    {
+      "name": "Trivia_013",
+      "category": "Movies",
+      "difficulty": "Easy",
+      "question": "WHICH DISNEY FILM STARS A LION NAMED SIMBA",
+      "answer": "THE LION KING",
+      "sentences": [
+        "WH_ICH DISNEY FILM ST_ARS A LION NAMED SIMBA",
+        "_T_H_E _L_I_O_N _K_I_N_G"
+      ]
+    },
+    {
+      "name": "Trivia_014",
+      "category": "General Knowledge",
+      "difficulty": "Easy",
+      "question": "HOW MANY DAYS ARE IN A LEAP YEAR",
+      "answer": "366",
+      "sentences": [
+        "HOW MA_NY DAYS ARE IN A LE_AP YEAR",
+        "_3_6_6"
+      ]
+    },
+    {
+      "name": "Trivia_015",
+      "category": "Music",
+      "difficulty": "Medium",
+      "question": "WHICH CLEF IS ALSO CALLED THE G CLEF",
+      "answer": "TREBLE",
+      "sentences": [
+        "WH_ICH CL_EF IS AL_SO CAL_LED THE G CLEF",
+        "_T_R_E_B_L_E"
+      ]
+    },
+    {
+      "name": "Trivia_016",
+      "category": "Sports",
+      "difficulty": "Medium",
+      "question": "HOW MANY PLAYERS START ON A SOCCER TEAM",
+      "answer": "ELEVEN",
+      "sentences": [
+        "HOW MA_NY PLA_YERS ST_ART ON A SOC_CER TEAM",
+        "_E_L_E_V_E_N"
+      ]
+    },
+    {
+      "name": "Trivia_017",
+      "category": "Geography",
+      "difficulty": "Medium",
+      "question": "WHAT IS THE CAPITAL OF CANADA",
+      "answer": "OTTAWA",
+      "sentences": [
+        "WH_AT IS THE CAP_ITAL OF CAN_ADA",
+        "_O_T_T_A_W_A"
+      ]
+    },
+    {
+      "name": "Trivia_018",
+      "category": "Science",
+      "difficulty": "Medium",
+      "question": "WHICH ELEMENT HAS THE SYMBOL AU",
+      "answer": "GOLD",
+      "sentences": [
+        "WH_ICH ELE_MENT HAS THE SYM_BOL AU",
+        "_G_O_L_D"
+      ]
+    },
+    {
+      "name": "Trivia_019",
+      "category": "History",
+      "difficulty": "Medium",
+      "question": "WHO WAS THE FIRST WOMAN TO WIN A NOBEL PRIZE",
+      "answer": "MARIE CURIE",
+      "sentences": [
+        "WHO WAS THE FI_RST WO_MAN TO WIN A NO_BEL PR_IZE",
+        "_M_A_R_I_E _C_U_R_I_E"
+      ]
+    },
+    {
+      "name": "Trivia_020",
+      "category": "Movies",
+      "difficulty": "Medium",
+      "question": "IN THE MATRIX WHICH PILL DOES NEO TAKE",
+      "answer": "RED",
+      "sentences": [
+        "IN THE MAT_RIX WH_ICH PI_LL DO_ES NEO TAKE",
+        "_R_E_D"
+      ]
+    },
+    {
+      "name": "Trivia_021",
+      "category": "General Knowledge",
+      "difficulty": "Medium",
+      "question": "HOW MANY SQUARES ARE ON A CHESS BOARD",
+      "answer": "SIXTY FOUR",
+      "sentences": [
+        "HOW MA_NY SQU_ARES ARE ON A CH_ESS BO_ARD",
+        "_S_I_X_T_Y _F_O_U_R"
+      ]
+    },
+    {
+      "name": "Trivia_022",
+      "category": "Music",
+      "difficulty": "Medium",
+      "question": "WHICH COMPOSER WROTE THE FOUR SEASONS",
+      "answer": "VIVALDI",
+      "sentences": [
+        "WH_ICH COMP_OSER WR_OTE THE FO_UR SEASONS",
+        "_V_I_V_A_L_D_I"
+      ]
+    },
+    {
+      "name": "Trivia_023",
+      "category": "Sports",
+      "difficulty": "Medium",
+      "question": "IN TENNIS WHAT WORD MEANS ZERO",
+      "answer": "LOVE",
+      "sentences": [
+        "IN TEN_NIS WH_AT WO_RD ME_ANS ZERO",
+        "_L_O_V_E"
+      ]
+    },
+    {
+      "name": "Trivia_024",
+      "category": "Geography",
+      "difficulty": "Medium",
+      "question": "WHICH COUNTRY HAS THE CITY OF KYOTO",
+      "answer": "JAPAN",
+      "sentences": [
+        "WH_ICH COU_NTRY HAS THE CI_TY OF KY_OTO",
+        "_J_A_P_A_N"
+      ]
+    },
+    {
+      "name": "Trivia_025",
+      "category": "Science",
+      "difficulty": "Medium",
+      "question": "IN HUMAN CELLS WHERE IS MOST DNA KEPT",
+      "answer": "NUCLEUS",
+      "sentences": [
+        "IN HU_MAN CE_LLS WH_ERE IS MO_ST DNA KEPT",
+        "_N_U_C_L_E_U_S"
+      ]
+    },
+    {
+      "name": "Trivia_026",
+      "category": "History",
+      "difficulty": "Medium",
+      "question": "WHICH SHIP SANK ON ITS FIRST VOYAGE IN 1912",
+      "answer": "TITANIC",
+      "sentences": [
+        "WH_ICH SH_IP SANK ON ITS FI_RST VOY_AGE IN 1912",
+        "_T_I_T_A_N_I_C"
+      ]
+    },
+    {
+      "name": "Trivia_027",
+      "category": "Movies",
+      "difficulty": "Medium",
+      "question": "WHICH 1939 FILM FOLLOWS DOROTHY TO OZ",
+      "answer": "THE WIZARD OF OZ",
+      "sentences": [
+        "WH_ICH 19_39 FI_LM FOL_LOWS DOROTHY TO OZ",
+        "_T_H_E _W_I_Z_A_R_D _O_F _O_Z"
+      ]
+    },
+    {
+      "name": "Trivia_028",
+      "category": "General Knowledge",
+      "difficulty": "Medium",
+      "question": "WHAT IS THE ROMAN NUMERAL FOR FIFTY",
+      "answer": "L",
+      "sentences": [
+        "WH_AT IS THE RO_MAN NUM_ERAL FOR FI_FTY",
+        "_L"
+      ]
+    },
+    {
+      "name": "Trivia_029",
+      "category": "Music",
+      "difficulty": "Medium",
+      "question": "HOW MANY LINES ARE ON A MUSIC STAFF",
+      "answer": "FIVE",
+      "sentences": [
+        "HOW MA_NY LI_NES ARE ON A MU_SIC ST_AFF",
+        "_F_I_V_E"
+      ]
+    },
+    {
+      "name": "Trivia_030",
+      "category": "Sports",
+      "difficulty": "Medium",
+      "question": "HOW MANY POINTS IS A TRY IN RUGBY UNION",
+      "answer": "FIVE",
+      "sentences": [
+        "HOW MA_NY POI_NTS IS A TRY IN RU_GBY UN_ION",
+        "_F_I_V_E"
+      ]
+    },
+    {
+      "name": "Trivia_031",
+      "category": "Geography",
+      "difficulty": "Medium",
+      "question": "WHICH COUNTRY HAS THE CITY OF LIMA",
+      "answer": "PERU",
+      "sentences": [
+        "WH_ICH COU_NTRY HAS THE CI_TY OF LI_MA",
+        "_P_E_R_U"
+      ]
+    },
+    {
+      "name": "Trivia_032",
+      "category": "Science",
+      "difficulty": "Medium",
+      "question": "WHAT GAS MAKES UP MOST OF OUR AIR",
+      "answer": "NITROGEN",
+      "sentences": [
+        "WH_AT GAS MA_KES UP MO_ST OF OUR AIR",
+        "_N_I_T_R_O_G_E_N"
+      ]
+    },
+    {
+      "name": "Trivia_033",
+      "category": "History",
+      "difficulty": "Medium",
+      "question": "WHO FOUNDED THE MONGOL EMPIRE",
+      "answer": "GENGHIS KHAN",
+      "sentences": [
+        "WHO FOU_NDED THE MON_GOL EMP_IRE",
+        "_G_E_N_G_H_I_S _K_H_A_N"
+      ]
+    },
+    {
+      "name": "Trivia_034",
+      "category": "Movies",
+      "difficulty": "Medium",
+      "question": "IN STAR WARS WHO TRAINS LUKE ON DAGOBAH",
+      "answer": "YODA",
+      "sentences": [
+        "IN ST_AR WA_RS WHO TRA_INS LU_KE ON DAGOBAH",
+        "_Y_O_D_A"
+      ]
+    },
+    {
+      "name": "Trivia_035",
+      "category": "General Knowledge",
+      "difficulty": "Medium",
+      "question": "WHICH METAL IS LIQUID AT 20 C",
+      "answer": "MERCURY",
+      "sentences": [
+        "WH_ICH ME_TAL IS LIQ_UID AT 20 C",
+        "_M_E_R_C_U_R_Y"
+      ]
+    },
+    {
+      "name": "Trivia_036",
+      "category": "Music",
+      "difficulty": "Hard",
+      "question": "WHO COMPOSED THE OPERA THE MAGIC FLUTE",
+      "answer": "MOZART",
+      "sentences": [
+        "WHO COMP_OSED THE OP_ERA THE MA_GIC FL_UTE",
+        "_M_O_Z_A_R_T"
+      ]
+    },
+    {
+      "name": "Trivia_037",
+      "category": "Sports",
+      "difficulty": "Hard",
+      "question": "WHICH COUNTRY WON THE FIRST FIFA WORLD CUP",
+      "answer": "URUGUAY",
+      "sentences": [
+        "WH_ICH COU_NTRY WON THE FI_RST FI_FA WO_RLD CUP",
+        "_U_R_U_G_U_A_Y"
+      ]
+    },
+    {
+      "name": "Trivia_038",
+      "category": "Geography",
+      "difficulty": "Hard",
+      "question": "WHAT IS THE CAPITAL OF BHUTAN",
+      "answer": "THIMPHU",
+      "sentences": [
+        "WH_AT IS THE CAP_ITAL OF BHU_TAN",
+        "_T_H_I_M_P_H_U"
+      ]
+    },
+    {
+      "name": "Trivia_039",
+      "category": "Science",
+      "difficulty": "Hard",
+      "question": "WHAT IS THE SI UNIT OF ELECTRIC CHARGE",
+      "answer": "COULOMB",
+      "sentences": [
+        "WH_AT IS THE SI UN_IT OF ELEC_TRIC CHA_RGE",
+        "_C_O_U_L_O_M_B"
+      ]
+    },
+    {
+      "name": "Trivia_040",
+      "category": "History",
+      "difficulty": "Hard",
+      "question": "WHERE DID NAPOLEON LOSE HIS LAST BATTLE",
+      "answer": "WATERLOO",
+      "sentences": [
+        "WH_ERE DID NAPO_LEON LO_SE HIS LA_ST BAT_TLE",
+        "_W_A_T_E_R_L_O_O"
+      ]
+    },
+    {
+      "name": "Trivia_041",
+      "category": "Movies",
+      "difficulty": "Hard",
+      "question": "WHO DIRECTED SPIRITED AWAY",
+      "answer": "HAYAO MIYAZAKI",
+      "sentences": [
+        "WHO DIRE_CTED SPIR_ITED AW_AY",
+        "_H_A_Y_A_O _M_I_Y_A_Z_A_K_I"
+      ]
+    },
+    {
+      "name": "Trivia_042",
+      "category": "General Knowledge",
+      "difficulty": "Hard",
+      "question": "WHAT IS THE NAME OF A NINE SIDED SHAPE",
+      "answer": "NONAGON",
+      "sentences": [
+        "WH_AT IS THE NA_ME OF A NI_NE SI_DED SH_APE",
+        "_N_O_N_A_G_O_N"
+      ]
+    },
+    {
+      "name": "Trivia_043",
+      "category": "Music",
+      "difficulty": "Hard",
+      "question": "WHICH JAZZ ICON WAS KNOWN AS BIRD",
+      "answer": "CHARLIE PARKER",
+      "sentences": [
+        "WH_ICH JA_ZZ IC_ON WAS KN_OWN AS BI_RD",
+        "_C_H_A_R_L_I_E _P_A_R_K_E_R"
+      ]
+    },
+    {
+      "name": "Trivia_044",
+      "category": "Sports",
+      "difficulty": "Medium",
+      "question": "IN GOLF WHAT IS TWO UNDER PAR CALLED",
+      "answer": "EAGLE",
+      "sentences": [
+        "IN GO_LF WH_AT IS TWO UN_DER PAR CAL_LED",
+        "_E_A_G_L_E"
+      ]
+    },
+    {
+      "name": "Trivia_045",
+      "category": "Geography",
+      "difficulty": "Hard",
+      "question": "WHICH DESERT COVERS MUCH OF BOTSWANA",
+      "answer": "KALAHARI",
+      "sentences": [
+        "WH_ICH DES_ERT COV_ERS MU_CH OF BOTS_WANA",
+        "_K_A_L_A_H_A_R_I"
+      ]
+    },
+    {
+      "name": "Trivia_046",
+      "category": "Science",
+      "difficulty": "Hard",
+      "question": "WHICH ELEMENT HAS THE ATOMIC NUMBER 74",
+      "answer": "TUNGSTEN",
+      "sentences": [
+        "WH_ICH ELE_MENT HAS THE ATO_MIC NUM_BER 74",
+        "_T_U_N_G_S_T_E_N"
+      ]
+    },
+    {
+      "name": "Trivia_047",
+      "category": "History",
+      "difficulty": "Hard",
+      "question": "WHICH EMPIRE HAD ITS CAPITAL AT CUSCO",
+      "answer": "INCA",
+      "sentences": [
+        "WH_ICH EMP_IRE HAD ITS CAP_ITAL AT CU_SCO",
+        "_I_N_C_A"
+      ]
+    },
+    {
+      "name": "Trivia_048",
+      "category": "Movies",
+      "difficulty": "Hard",
+      "question": "WHICH FILM WON THE FIRST BEST PICTURE OSCAR",
+      "answer": "WINGS",
+      "sentences": [
+        "WH_ICH FI_LM WON THE FI_RST BE_ST PIC_TURE OS_CAR",
+        "_W_I_N_G_S"
+      ]
+    },
+    {
+      "name": "Trivia_049",
+      "category": "General Knowledge",
+      "difficulty": "Hard",
+      "question": "WHO WROTE THE NOVEL BRAVE NEW WORLD",
+      "answer": "ALDOUS HUXLEY",
+      "sentences": [
+        "WHO WR_OTE THE NO_VEL BR_AVE NEW WO_RLD",
+        "_A_L_D_O_U_S _H_U_X_L_E_Y"
+      ]
+    },
+    {
+      "name": "Trivia_050",
+      "category": "General Knowledge",
+      "difficulty": "Medium",
+      "question": "WHAT IS THE SMALLEST PRIME NUMBER",
+      "answer": "TWO",
+      "sentences": [
+        "WH_AT IS THE SMAL_LEST PR_IME NUM_BER",
+        "_T_W_O"
+      ]
+    }
+  ]
+}

@@ -1,89 +1,103 @@
 using System;
 using UnityEngine;
 
-/// <summary>
-/// Owns the sequence of levels for the game. Loads the first level on start,
-/// and tells the LevelFlowManager to load the next level whenever the current
-/// one is completed. LevelFlowManager remains responsible for driving a single
-/// level's internal flow (sentences, gaps, letter pool) - this class only
-/// decides *which* LevelData to hand it and *when*.
-/// </summary>
+/// <summary>Plays the saved position in one ordered sequence. Categories describe levels.</summary>
+[DefaultExecutionOrder(100)]
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private LevelFlowManager flowManager;
     [SerializeField] private LevelSequenceData levelSequence;
-
-    [Tooltip("If true, wraps back to the first level after the last one is completed.")]
-    [SerializeField] private bool loopLevels = false;
-
+    [SerializeField] private bool loopLevels;
     private int currentLevelIndex = -1;
+    private bool started;
+    private bool completed;
+    private bool savingProgress;
 
-    public event Action<int> LevelLoaded;   // passes the index of the level just loaded
-    public event Action AllLevelsCompleted; // fired when the last level finishes and looping is off
-
+    public event Action<int> LevelLoaded;
+    public event Action AllLevelsCompleted;
     public int CurrentLevelIndex => currentLevelIndex;
     public int LevelCount => levelSequence != null ? levelSequence.LevelCount : 0;
 
     private void OnEnable()
     {
-        flowManager.LevelCompleted += OnLevelCompleted;
-
-        LoadFirstLevel();
+        if (flowManager != null) flowManager.LevelCompleted += OnLevelCompleted;
+        PlayerLevelProgress.Changed += OnProgressChanged;
+        if (started) ResumeSavedLevel();
     }
+
+    private void Start() { started = true; ResumeSavedLevel(); }
 
     private void OnDisable()
     {
-        flowManager.LevelCompleted -= OnLevelCompleted;
+        if (flowManager != null) flowManager.LevelCompleted -= OnLevelCompleted;
+        PlayerLevelProgress.Changed -= OnProgressChanged;
     }
 
-    public void LoadFirstLevel()
+    private void OnProgressChanged()
     {
-        LoadLevelAt(0);
+        if (started && !savingProgress) ResumeSavedLevel();
+    }
+
+    public void ResumeSavedLevel()
+    {
+        int index = PlayerLevelProgress.LevelNumber - 1;
+        if (loopLevels && LevelCount > 0) index %= LevelCount;
+        if (index >= LevelCount)
+        {
+            completed = true;
+            currentLevelIndex = -1;
+            if (flowManager != null) flowManager.LoadLevel(null);
+            AllLevelsCompleted?.Invoke();
+            return;
+        }
+        LoadLevelAt(index);
+    }
+
+    public void LoadFirstLevel() => LoadLevelAt(0);
+
+    public void RestartCurrentLevel()
+    {
+        if (!completed && currentLevelIndex >= 0) LoadLevelAt(currentLevelIndex);
+    }
+
+    public void ResetUnfinishedWords()
+    {
+        if (!completed && currentLevelIndex >= 0 && flowManager != null) flowManager.ResetUnfinishedWords();
     }
 
     public void LoadLevelAt(int index)
     {
-        if (!IsValidIndex(index))
-        {
-            Debug.LogWarning($"LevelManager: no level at index {index} (level count = {LevelCount})");
-            return;
-        }
-
+        if (index < 0 || index >= LevelCount || flowManager == null) return;
         LevelData level = levelSequence.GetLevel(index);
         if (level == null)
         {
-            Debug.LogWarning($"LevelManager: level at index {index} is null in the sequence.");
+            completed = true;
+            currentLevelIndex = -1;
+            flowManager.LoadLevel(null);
+            Debug.LogWarning($"LevelManager: missing level at sequence position {index + 1}.");
             return;
         }
-
         currentLevelIndex = index;
+        completed = false;
+        SaveLevelNumber(index + 1);
         flowManager.LoadLevel(level);
-        LevelLoaded?.Invoke(currentLevelIndex);
+        LevelLoaded?.Invoke(index);
+    }
+
+    private void SaveLevelNumber(int number)
+    {
+        if (PlayerLevelProgress.LevelNumber == number) return;
+        savingProgress = true;
+        try { PlayerLevelProgress.SetLevelNumber(number); }
+        finally { savingProgress = false; }
     }
 
     private void OnLevelCompleted()
     {
-        int nextIndex = currentLevelIndex + 1;
-
-        if (!IsValidIndex(nextIndex))
-        {
-            if (loopLevels && LevelCount > 0)
-            {
-                LoadLevelAt(0);
-            }
-            else
-            {
-                AllLevelsCompleted?.Invoke();
-            }
-
-            return;
-        }
-
-        LoadLevelAt(nextIndex);
-    }
-
-    private bool IsValidIndex(int index)
-    {
-        return levelSequence != null && index >= 0 && index < LevelCount;
+        if (completed || currentLevelIndex < 0) return;
+        completed = true;
+        int next = currentLevelIndex + 1;
+        SaveLevelNumber(loopLevels && next >= LevelCount ? 1 : next + 1);
+        ResumeSavedLevel();
     }
 }

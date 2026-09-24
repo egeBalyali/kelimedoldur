@@ -81,6 +81,31 @@ public class LevelFlowManager : MonoBehaviour
 
     // ---------------- Navigation buttons ----------------
 
+    public void ResetUnfinishedWords()
+    {
+        if (currentLevel == null) return;
+        foreach (var page in sentenceGapFills)
+        {
+            SentenceData sentence = currentLevel.GetSentence(page.Key);
+            if (sentence == null) continue;
+            var letters = new Dictionary<int, char>();
+            foreach (var fill in page.Value)
+                if (fill.Value != null) letters[fill.Key] = fill.Value.Letter;
+            HashSet<int> preserved = sentence.GetCorrectWordGapIndices(letters);
+            var toRemove = new List<int>();
+            foreach (var fill in page.Value)
+            {
+                if (preserved.Contains(fill.Key)) continue;
+                if (fill.Value != null) letterPool.SetLetterUsed(fill.Value, false);
+                toRemove.Add(fill.Key);
+            }
+            foreach (int gap in toRemove) page.Value.Remove(gap);
+        }
+        currentSentenceIndex = 0;
+        // Rebuilds the visible page, stopping the trace; restored words suppress all completion feedback.
+        ShowCurrentSentence();
+    }
+
     public void GoToNextSentence()
     {
         if (!CanGoNext) return;
@@ -106,7 +131,7 @@ public class LevelFlowManager : MonoBehaviour
 
         if (sentenceView.IsComplete && IsCurrentSentenceFullyCorrect())
         {
-            Debug.Log($"[LevelFlowManager] Answer correct — sentence {currentSentenceIndex} fully and exactly matches. Advancing to next level.");
+            Debug.Log($"[LevelFlowManager] Answer correct â€” sentence {currentSentenceIndex} fully and exactly matches. Advancing to next level.");
             LevelCompleted?.Invoke();
         }
         else
@@ -119,7 +144,7 @@ public class LevelFlowManager : MonoBehaviour
     // Earlier sentences are unchecked scratch/practice space for the player.
     private bool IsCurrentSentenceFullyCorrect()
     {
-        SentenceData sentence = currentLevel.GetSentence(currentSentenceIndex);
+        SentenceData sentence = currentLevel?.GetSentence(currentSentenceIndex);
         if (sentence == null) return false;
 
         if (!sentenceGapFills.TryGetValue(currentSentenceIndex, out var fills))
@@ -141,7 +166,7 @@ public class LevelFlowManager : MonoBehaviour
 
     private void ShowCurrentSentence()
     {
-        SentenceData sentence = currentLevel.GetSentence(currentSentenceIndex);
+        SentenceData sentence = currentLevel?.GetSentence(currentSentenceIndex);
         sentenceView.Setup(sentence, IsLastSentence);
 
         RestoreGapFillsForCurrentSentence();

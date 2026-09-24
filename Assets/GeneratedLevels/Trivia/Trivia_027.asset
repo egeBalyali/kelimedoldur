@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82206f1a42f74d3448420578b842a756, type: 3}
+  m_Name: Trivia_027
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  category: 5
+  difficulty: 1
+  sentences:
+  - rawSentence: WHICH 1_9_3_9 FI_LM FOL_LOWS _DOROTHY TO _O_Z
+  - rawSentence: _T_H_E _W_I_Z_A_R_D _O_F _O_Z
+  letters: 480045004f004400490054004f004f0039005a005200390033005a004100440057004c004c0046005a00

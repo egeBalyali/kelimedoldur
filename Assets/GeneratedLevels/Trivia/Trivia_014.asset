@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82206f1a42f74d3448420578b842a756, type: 3}
+  m_Name: Trivia_014
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  category: 0
+  difficulty: 0
+  sentences:
+  - rawSentence: _W_HAT IS A _Y_E_AR WITH _3_66 DAYS CALLED
+  - rawSentence: _L_E_A_P _Y_E_A_R
+  letters: 4c0045005000410059004500520041003300360048005700590045004100

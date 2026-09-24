@@ -44,5 +44,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Buttons
+    uniqueID: 1619719545
+    locked: 0
+  - name: MainMenu
+    uniqueID: 1283927245
+    locked: 0
+  - name: Win-Lose
+    uniqueID: 3680198925
+    locked: 0
   m_RenderingLayers:
   - Default

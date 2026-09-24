@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82206f1a42f74d3448420578b842a756, type: 3}
+  m_Name: Trivia_017
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  category: 6
+  difficulty: 1
+  sentences:
+  - rawSentence: _W_H_A_T _I_S _T_H_E CAPITAL OF _CAN_ADA
+  - rawSentence: _O_T_T_A_W_A
+  letters: 540053004100570054005400570054004100430041004900480045004f0048004100
