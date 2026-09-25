@@ -16,6 +16,10 @@ public class SentenceView : MonoBehaviour
     [SerializeField] private int maxCharsPerLine = 11;
     [SerializeField] private int maxLines = 4;
 
+    [Header("Fixed Tile Board (Optional)")]
+    [Tooltip("When assigned, letters occupy this grid. Spaces and unused cells show its green tiles. Other scenes keep their normal line layout.")]
+    [SerializeField] private SentenceBoardGrid tileBoard;
+
     [Header("Word Trace Effect")]
     [SerializeField] private WordTraceSequencer traceSequencerPrefab;
     [SerializeField] private Transform traceEffectParent; // Where the runtime particle instance is parented. Defaults to sentenceContainer if left empty.
@@ -41,6 +45,7 @@ public class SentenceView : MonoBehaviour
 
     private SentenceData currentSentence;
     private int activeGapIndex = -1;
+    private bool layoutValid = true;
 
     public event Action<int> GapPressed;
     public event Action CorrectWordTraceStarted;
@@ -54,6 +59,8 @@ public class SentenceView : MonoBehaviour
     {
         get
         {
+            if (!layoutValid)
+                return false;
             foreach (var kvp in gapViews)
                 if (kvp.Value.IsEmpty)
                     return false;
@@ -77,6 +84,12 @@ public class SentenceView : MonoBehaviour
             return;
 
         char[] displayChars = sentence.DisplayCharacters;
+
+        if (tileBoard != null)
+        {
+            SetupTileBoard(displayChars, isLastSentence);
+            return;
+        }
 
         // 1. Group display character indices by token (Words vs Spaces)
         List<List<int>> tokens = TokenizeSentence(displayChars);
@@ -164,6 +177,74 @@ public class SentenceView : MonoBehaviour
         }
     }
 
+    private void SetupTileBoard(char[] displayChars, bool isAnswerPage)
+    {
+        // Plan the complete sentence first, so overflow cannot silently omit playable gaps.
+        List<List<int>> lines = SentenceBoardLayout.BuildRows(displayChars, tileBoard.Columns, out var wordForIndex);
+        const string answerHeading = "ANSWER";
+        int firstAnswerRow = isAnswerPage ? 2 : 0;
+
+        if (lines.Count + firstAnswerRow > tileBoard.Rows ||
+            (isAnswerPage && answerHeading.Length > tileBoard.Columns))
+        {
+            layoutValid = false;
+            Debug.LogError($"[SentenceView] Sentence needs {lines.Count + firstAnswerRow} rows (including any answer heading and blank row), and the answer heading needs six columns. Board size: {tileBoard.Columns} x {tileBoard.Rows}. Increase the board size or shorten the sentence.", this);
+            return;
+        }
+
+        if (isAnswerPage)
+        {
+            int firstColumn = (tileBoard.Columns - answerHeading.Length) / 2;
+            for (int i = 0; i < answerHeading.Length; i++)
+            {
+                LetterView headingTile = LetterView.Create(letterPrefab, tileBoard.transform, answerHeading[i]);
+                headingTile.SetInteractable(false);
+                headingTile.SetActive(false);
+                spawned.Add(headingTile.gameObject);
+                tileBoard.PlaceTile((RectTransform)headingTile.transform, firstColumn + i, 0);
+            }
+        }
+
+        for (int row = 0; row < lines.Count; row++)
+        {
+            List<int> line = lines[row];
+            int firstColumn = (tileBoard.Columns - line.Count) / 2;
+            for (int column = 0; column < line.Count; column++)
+            {
+                int index = line[column];
+                if (index < 0)
+                    continue;
+
+                int wordId = wordForIndex[index];
+                if (!wordMemberRects.ContainsKey(wordId))
+                    wordMemberRects[wordId] = new List<RectTransform>();
+
+                bool isGap = displayChars[index] == '_';
+                LetterView tile = isGap
+                    ? LetterView.CreateEmpty(letterPrefab, tileBoard.transform)
+                    : LetterView.Create(letterPrefab, tileBoard.transform, displayChars[index]);
+                tile.SetInteractable(isGap);
+                tile.SetActive(false);
+                spawned.Add(tile.gameObject);
+                var rect = (RectTransform)tile.transform;
+                tileBoard.PlaceTile(rect, firstColumn + column, row + firstAnswerRow);
+                wordMemberRects[wordId].Add(rect);
+
+                if (isGap)
+                {
+                    int capturedIndex = index;
+                    tile.Clicked += _ => GapPressed?.Invoke(capturedIndex);
+                    gapViews[index] = tile;
+                    gapIndicesInOrder.Add(index);
+                    gapToWordId[index] = wordId;
+                    if (!wordGapMembers.ContainsKey(wordId))
+                        wordGapMembers[wordId] = new List<int>();
+                    wordGapMembers[wordId].Add(index);
+                }
+            }
+        }
+    }
+
     /// <summary> Breaks display characters array into token groups of indices representing words/spaces. </summary>
     private List<List<int>> TokenizeSentence(char[] characters)
     {
@@ -223,6 +304,7 @@ public class SentenceView : MonoBehaviour
 
     private void Clear()
     {
+        layoutValid = true;
         DestroyActiveTraceSequencer();
         DestroyTraceTargetRect();
 

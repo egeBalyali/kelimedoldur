@@ -67,7 +67,7 @@ public class MainMenuController : MonoBehaviour
         LevelData level = levelSequence != null ? levelSequence.GetLevel(number - 1) : null;
         if (playButtonText != null)
             playButtonText.text = level != null
-                ? levelPrefix + number + "\n<size=45%>" + LevelCategories.DisplayName(level.Category) + "</size>"
+                ? levelPrefix + number + "\n<size=45%>(" + LevelCategories.DisplayName(level.Category) + ")</size>"
                 : (levelSequence != null && number > levelSequence.LevelCount ? "All levels complete" : "No level available");
         if (playButton != null) playButton.interactable = level != null;
         CategoryTheme theme = level == null || categoryThemes == null ? null : Array.Find(categoryThemes, t => t != null && t.category == level.Category);

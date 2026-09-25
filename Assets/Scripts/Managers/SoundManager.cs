@@ -22,12 +22,15 @@ public class SoundManager : MonoBehaviour
 
     private void OnEnable()
     {
+        GameSettings.Changed += ApplySettings;
+        ApplySettings();
         if (sentenceView == null) sentenceView = GetComponent<SentenceView>();
         if (sentenceView != null) sentenceView.CorrectWordTraceStarted += PlayCorrectWord;
     }
 
     private void OnDisable()
     {
+        GameSettings.Changed -= ApplySettings;
         if (sentenceView != null) sentenceView.CorrectWordTraceStarted -= PlayCorrectWord;
         if (effectsSource != null) effectsSource.Stop();
     }
@@ -39,15 +42,19 @@ public class SoundManager : MonoBehaviour
 
     public void SetMuted(bool value)
     {
-        muted = value;
-        if (muted && effectsSource != null) effectsSource.Stop();
+        GameSettings.SoundEnabled = !value;
+    }
+
+    private void ApplySettings()
+    {
+        if (effectsSource != null) effectsSource.mute = muted || !GameSettings.SoundEnabled;
     }
 
     public void SetVolume(float value) => volume = Mathf.Clamp01(value);
 
     public void PlayCorrectWord()
     {
-        if (!isActiveAndEnabled || muted || correctWordClip == null || effectsSource == null) return;
+        if (!isActiveAndEnabled || muted || !GameSettings.SoundEnabled || correctWordClip == null || effectsSource == null) return;
         effectsSource.PlayOneShot(correctWordClip, volume);
     }
 }

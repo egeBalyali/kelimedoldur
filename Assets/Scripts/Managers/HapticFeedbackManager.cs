@@ -25,7 +25,7 @@ public class HapticFeedbackManager : MonoBehaviour
         if (flowManager != null) flowManager.AnswerIncorrect -= PlaySad;
     }
 
-    public void SetHapticsEnabled(bool value) => hapticsEnabled = value;
+    public void SetHapticsEnabled(bool value) => GameSettings.HapticsEnabled = value;
 
     [ContextMenu("Test Happy Haptic")]
     public void PlayHappy() => PlayFeedback(true);
@@ -35,7 +35,7 @@ public class HapticFeedbackManager : MonoBehaviour
 
     private void PlayFeedback(bool happy)
     {
-        if (!isActiveAndEnabled || !hapticsEnabled || !Application.isPlaying) return;
+        if (!isActiveAndEnabled || !hapticsEnabled || !GameSettings.HapticsEnabled || !Application.isPlaying) return;
 #if UNITY_EDITOR
         if (logInEditor) Debug.Log(happy ? "[Haptics] Happy" : "[Haptics] Sad", this);
 #elif UNITY_ANDROID

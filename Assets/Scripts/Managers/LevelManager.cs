@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private LevelFlowManager flowManager;
     [SerializeField] private LevelSequenceData levelSequence;
     [SerializeField] private bool loopLevels;
+    [SerializeField] private bool waitForWinScreen;
     private int currentLevelIndex = -1;
     private bool started;
     private bool completed;
@@ -15,6 +16,7 @@ public class LevelManager : MonoBehaviour
 
     public event Action<int> LevelLoaded;
     public event Action AllLevelsCompleted;
+    public event Action LevelWon;
     public int CurrentLevelIndex => currentLevelIndex;
     public int LevelCount => levelSequence != null ? levelSequence.LevelCount : 0;
 
@@ -98,6 +100,7 @@ public class LevelManager : MonoBehaviour
         completed = true;
         int next = currentLevelIndex + 1;
         SaveLevelNumber(loopLevels && next >= LevelCount ? 1 : next + 1);
-        ResumeSavedLevel();
+        LevelWon?.Invoke();
+        if (!waitForWinScreen) ResumeSavedLevel();
     }
 }
