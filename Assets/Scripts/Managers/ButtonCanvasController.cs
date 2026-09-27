@@ -24,7 +24,9 @@ public class ButtonCanvasController : MonoBehaviour
 
     public void GoHome()
     {
-        if (mainMenu != null) mainMenu.ShowMainMenu();
+        if (mainMenu == null) return;
+        if (levelManager != null) levelManager.AbandonCurrentLevel();
+        mainMenu.ShowMainMenu();
     }
 
     public void Retry()

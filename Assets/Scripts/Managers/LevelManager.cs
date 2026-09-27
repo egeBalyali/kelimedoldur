@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using TMPro;
 
 /// <summary>Plays the saved position in one ordered sequence. Categories describe levels.</summary>
 [DefaultExecutionOrder(100)]
@@ -9,6 +10,92 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private LevelSequenceData levelSequence;
     [SerializeField] private bool loopLevels;
     [SerializeField] private bool waitForWinScreen;
+    [SerializeField] private TMP_Text lifeCountText;
+    [SerializeField] private TMP_Text timeUntilNextLifeText;
+    public const int MaxLives = 9;
+    private const long LifeIntervalSeconds = 600;
+    private const string LivesKey = "PlayerLives";
+    private const string NextLifeKey = "NextLifeUtc";
+    private int lives;
+    private long nextLifeUtc;
+    private bool livesLoaded;
+    private bool failed;
+    public event Action LivesChanged;
+    public int Lives { get { RefreshLives(); return lives; } }
+    public bool CanPlay => Lives > 0;
+
+    public void RefreshLives() => RefreshLivesAt(DateTimeOffset.UtcNow.ToUnixTimeSeconds());
+
+    private void RefreshLivesAt(long now)
+    {
+        bool changed = false;
+        if (!livesLoaded)
+        {
+            lives = Math.Max(0, Math.Min(MaxLives, PlayerPrefs.GetInt(LivesKey, MaxLives)));
+            long.TryParse(PlayerPrefs.GetString(NextLifeKey, "0"), out nextLifeUtc);
+            livesLoaded = true;
+            changed = true;
+        }
+        if (lives < MaxLives)
+        {
+            if (nextLifeUtc <= 0 || nextLifeUtc > now + LifeIntervalSeconds)
+            {
+                nextLifeUtc = now + LifeIntervalSeconds;
+                changed = true;
+            }
+            if (now >= nextLifeUtc)
+            {
+                long gained = Math.Min(MaxLives - lives, 1 + (now - nextLifeUtc) / LifeIntervalSeconds);
+                lives += (int)gained;
+                nextLifeUtc += gained * LifeIntervalSeconds;
+                changed = true;
+            }
+        }
+        if (lives == MaxLives && nextLifeUtc != 0) { nextLifeUtc = 0; changed = true; }
+        if (changed) SaveLives();
+        if (lifeCountText != null) lifeCountText.text = lives.ToString();
+        if (timeUntilNextLifeText != null)
+            timeUntilNextLifeText.text = lives == MaxLives ? "Full" : $"{(nextLifeUtc - now) / 60:00}:{(nextLifeUtc - now) % 60:00}";
+        if (changed) LivesChanged?.Invoke();
+    }
+
+    private void SaveLives()
+    {
+        PlayerPrefs.SetInt(LivesKey, lives);
+        PlayerPrefs.SetString(NextLifeKey, nextLifeUtc.ToString());
+        PlayerPrefs.Save();
+    }
+
+    private void Update() => RefreshLives();
+
+    private void OnLevelFailed()
+    {
+        if (failed || completed || currentLevelIndex < 0) return;
+        failed = true;
+        RefreshLives();
+        if (lives <= 0) return;
+        if (lives == MaxLives) nextLifeUtc = DateTimeOffset.UtcNow.ToUnixTimeSeconds() + LifeIntervalSeconds;
+        lives--;
+        SaveLives();
+        RefreshLives();
+        LivesChanged?.Invoke();
+    }
+
+    public bool RetryFailedLevel()
+    {
+        if (!CanPlay || !failed || completed || currentLevelIndex < 0 || flowManager == null) return false;
+        failed = false;
+        flowManager.RetryFailedLevel();
+        return true;
+    }
+
+    public void AbandonCurrentLevel()
+    {
+        if (failed || completed || currentLevelIndex < 0) return;
+        // Charge once without opening the lose screen while navigating home.
+        flowManager?.StopLevel();
+        OnLevelFailed();
+    }
     private int currentLevelIndex = -1;
     private bool started;
     private bool completed;
@@ -22,6 +109,12 @@ public class LevelManager : MonoBehaviour
 
     private void OnEnable()
     {
+        RefreshLives();
+        if (flowManager != null)
+        {
+            flowManager.AnswerIncorrect += OnLevelFailed;
+            flowManager.TimeExpired += OnLevelFailed;
+        }
         if (flowManager != null) flowManager.LevelCompleted += OnLevelCompleted;
         PlayerLevelProgress.Changed += OnProgressChanged;
         if (started) ResumeSavedLevel();
@@ -31,6 +124,11 @@ public class LevelManager : MonoBehaviour
 
     private void OnDisable()
     {
+        if (flowManager != null)
+        {
+            flowManager.AnswerIncorrect -= OnLevelFailed;
+            flowManager.TimeExpired -= OnLevelFailed;
+        }
         if (flowManager != null) flowManager.LevelCompleted -= OnLevelCompleted;
         PlayerLevelProgress.Changed -= OnProgressChanged;
     }
@@ -70,6 +168,7 @@ public class LevelManager : MonoBehaviour
     public void LoadLevelAt(int index)
     {
         if (index < 0 || index >= LevelCount || flowManager == null) return;
+        if (!CanPlay) { flowManager.LoadLevel(null); return; }
         LevelData level = levelSequence.GetLevel(index);
         if (level == null)
         {
@@ -81,6 +180,7 @@ public class LevelManager : MonoBehaviour
         }
         currentLevelIndex = index;
         completed = false;
+        failed = false;
         SaveLevelNumber(index + 1);
         flowManager.LoadLevel(level);
         LevelLoaded?.Invoke(index);
@@ -96,7 +196,7 @@ public class LevelManager : MonoBehaviour
 
     private void OnLevelCompleted()
     {
-        if (completed || currentLevelIndex < 0) return;
+        if (completed || failed || currentLevelIndex < 0) return;
         completed = true;
         int next = currentLevelIndex + 1;
         SaveLevelNumber(loopLevels && next >= LevelCount ? 1 : next + 1);

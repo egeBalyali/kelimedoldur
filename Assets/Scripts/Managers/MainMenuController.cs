@@ -50,6 +50,7 @@ public class MainMenuController : MonoBehaviour
                 playButton.onClick.AddListener(Play);
             }
             if (levelManager != null) levelManager.AllLevelsCompleted += ShowMainMenu;
+            if (levelManager != null) levelManager.LivesChanged += RefreshPlayButtonText;
         }
         RefreshPlayButtonText();
     }
@@ -59,6 +60,7 @@ public class MainMenuController : MonoBehaviour
         PlayerLevelProgress.Changed -= RefreshPlayButtonText;
         if (playButton != null) playButton.onClick.RemoveListener(Play);
         if (levelManager != null) levelManager.AllLevelsCompleted -= ShowMainMenu;
+        if (levelManager != null) levelManager.LivesChanged -= RefreshPlayButtonText;
     }
 
     public void RefreshPlayButtonText()
@@ -69,7 +71,7 @@ public class MainMenuController : MonoBehaviour
             playButtonText.text = level != null
                 ? levelPrefix + number + "\n<size=45%>(" + LevelCategories.DisplayName(level.Category) + ")</size>"
                 : (levelSequence != null && number > levelSequence.LevelCount ? "All levels complete" : "No level available");
-        if (playButton != null) playButton.interactable = level != null;
+        if (playButton != null) playButton.interactable = level != null && (levelManager == null || levelManager.CanPlay);
         CategoryTheme theme = level == null || categoryThemes == null ? null : Array.Find(categoryThemes, t => t != null && t.category == level.Category);
         if (playButtonImage != null) playButtonImage.color = theme != null ? theme.tint : Color.white;
         if (menuBackground != null)
@@ -79,7 +81,7 @@ public class MainMenuController : MonoBehaviour
     public void Play()
     {
         if (!Application.isPlaying || levelManager == null || levelSequence == null ||
-            levelSequence.GetLevel(PlayerLevelProgress.LevelNumber - 1) == null) return;
+            levelSequence.GetLevel(PlayerLevelProgress.LevelNumber - 1) == null || !levelManager.CanPlay) return;
         if (levelCanvas != null) levelCanvas.SetActive(true);
         if (buttonCanvas != null) buttonCanvas.SetActive(true);
         levelManager.ResumeSavedLevel();

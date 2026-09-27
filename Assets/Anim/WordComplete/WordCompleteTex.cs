@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEngine;
 using UnityEditor;
 using System.IO;
@@ -37,3 +38,4 @@ public partial class TextureGenerator
         Debug.Log("Generated Sparkle PNG at: Assets/Tex_Sparkle4Point.png");
     }
 }
+#endif

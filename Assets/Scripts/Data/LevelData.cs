@@ -265,6 +265,13 @@ public class LevelData : ScriptableObject
 
     public int SentenceCount => sentences?.Count ?? 0;
 
+    /// <summary>
+    /// Total number of player-fillable gaps across the whole level (one entry per gap,
+    /// duplicate letters included — same count as <see cref="letters"/>). Used to scale
+    /// per-level timer duration and starting score.
+    /// </summary>
+    public int TotalGapCount => letters?.Length ?? 0;
+
     public SentenceData GetSentence(int index)
     {
         if (sentences == null || index < 0 || index >= sentences.Count)

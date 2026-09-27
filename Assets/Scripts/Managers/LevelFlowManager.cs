@@ -16,6 +16,21 @@ public class LevelFlowManager : MonoBehaviour
     [SerializeField] private LetterPoolController letterPool;
     [SerializeField] private LevelData tmpLevelData;
 
+    [Header("Timer & Scoring")]
+    [SerializeField] private LevelTimer levelTimer;
+    [SerializeField] private LevelScoreManager scoreManager;
+
+    [Header("Lives")]
+    [SerializeField] private GameObject[] hearts = new GameObject[3];
+    private const int MaxWrongSubmits = 3;
+    private bool levelEnded;
+
+    private void RefreshHearts()
+    {
+        for (int i = 0; i < hearts.Length; i++)
+            if (hearts[i] != null) hearts[i].SetActive(i < MaxWrongSubmits - wrongSubmitCount);
+    }
+
     [Header("Navigation")]
     [SerializeField] private Button previousButton;
     [SerializeField] private Button nextButton;
@@ -24,6 +39,7 @@ public class LevelFlowManager : MonoBehaviour
     private LevelData currentLevel;
     private int currentSentenceIndex;
     private int activeGapIndex = -1;
+    private int wrongSubmitCount = 0;
 
     // Per-sentence: gap index -> the pool LetterView tile that filled it.
     // Kept per sentence (instead of clearing on every ShowCurrentSentence)
@@ -31,10 +47,14 @@ public class LevelFlowManager : MonoBehaviour
     private readonly Dictionary<int, Dictionary<int, LetterView>> sentenceGapFills =
         new Dictionary<int, Dictionary<int, LetterView>>();
 
+    // Gap indices in the first sentence that have already earned their word-completion
+    // bonus, so a word isn't paid out twice (e.g. after navigating away and back).
+    private readonly HashSet<int> creditedFirstSentenceGaps = new HashSet<int>();
+
     public event Action LevelCompleted;
     public event Action<int> SentenceCompleted;  // fired when a sentence's gaps are all filled
-    public event Action WrongLetterPressed;       // wrong letter on the answer sentence
     public event Action AnswerIncorrect;          // Submit pressed but answer isn't right/complete
+    public event Action TimeExpired;              // level's timer ran out
 
     public bool IsFirstSentence => currentSentenceIndex <= 0;
     public bool IsLastSentence => currentLevel != null && currentSentenceIndex >= currentLevel.SentenceCount - 1;
@@ -50,6 +70,8 @@ public class LevelFlowManager : MonoBehaviour
         if (nextButton != null) nextButton.onClick.AddListener(GoToNextSentence);
         if (submitButton != null) submitButton.onClick.AddListener(SubmitAnswer);
 
+        if (levelTimer != null) levelTimer.TimeExpired += HandleTimeExpired;
+
         LoadLevel(tmpLevelData);
     }
 
@@ -61,6 +83,16 @@ public class LevelFlowManager : MonoBehaviour
         if (previousButton != null) previousButton.onClick.RemoveListener(GoToPreviousSentence);
         if (nextButton != null) nextButton.onClick.RemoveListener(GoToNextSentence);
         if (submitButton != null) submitButton.onClick.RemoveListener(SubmitAnswer);
+
+        if (levelTimer != null) levelTimer.TimeExpired -= HandleTimeExpired;
+    }
+
+    private void HandleTimeExpired()
+    {
+        if (levelEnded) return;
+        levelEnded = true;
+        scoreManager?.StopLevel();
+        TimeExpired?.Invoke();
     }
 
     [ContextMenu("load level")]
@@ -73,17 +105,47 @@ public class LevelFlowManager : MonoBehaviour
     {
         currentLevel = level;
         currentSentenceIndex = 0;
+        wrongSubmitCount = 0;
+        levelEnded = level == null;
+        RefreshHearts();
         sentenceGapFills.Clear();
+        creditedFirstSentenceGaps.Clear();
 
         letterPool.Setup(level != null ? level.letters : null);
         ShowCurrentSentence();
+
+        if (levelTimer != null) levelTimer.StartLevel(level);
+        if (scoreManager != null) scoreManager.StartLevel(level);
+        if (levelEnded)
+        {
+            levelTimer?.Stop();
+            scoreManager?.StopLevel();
+        }
+    }
+
+    public void RetryFailedLevel()
+    {
+        if (currentLevel == null) return;
+        levelEnded = false;
+        wrongSubmitCount = 0;
+        RefreshHearts();
+        ResetUnfinishedWords();
+        levelTimer?.StartLevel(currentLevel);
+        scoreManager?.StartLevel(currentLevel);
+    }
+
+    public void StopLevel()
+    {
+        levelEnded = true;
+        levelTimer?.Stop();
+        scoreManager?.StopLevel();
     }
 
     // ---------------- Navigation buttons ----------------
 
     public void ResetUnfinishedWords()
     {
-        if (currentLevel == null) return;
+        if (currentLevel == null || levelEnded) return;
         foreach (var page in sentenceGapFills)
         {
             SentenceData sentence = currentLevel.GetSentence(page.Key);
@@ -108,7 +170,7 @@ public class LevelFlowManager : MonoBehaviour
 
     public void GoToNextSentence()
     {
-        if (!CanGoNext) return;
+        if (levelEnded || !CanGoNext) return;
 
 
         currentSentenceIndex++;
@@ -117,7 +179,7 @@ public class LevelFlowManager : MonoBehaviour
 
     public void GoToPreviousSentence()
     {
-        if (!CanGoPrevious) return;
+        if (levelEnded || !CanGoPrevious) return;
 
         currentSentenceIndex--;
         ShowCurrentSentence();
@@ -127,16 +189,34 @@ public class LevelFlowManager : MonoBehaviour
 
     public void SubmitAnswer()
     {
-        if (!IsLastSentence) return;
+        if (levelEnded || !IsLastSentence) return;
 
         if (sentenceView.IsComplete && IsCurrentSentenceFullyCorrect())
         {
             Debug.Log($"[LevelFlowManager] Answer correct — sentence {currentSentenceIndex} fully and exactly matches. Advancing to next level.");
+            levelTimer?.Stop();
+            scoreManager?.StopLevel();
+            levelEnded = true;
             LevelCompleted?.Invoke();
         }
         else
         {
-            AnswerIncorrect?.Invoke();
+            wrongSubmitCount++;
+            RefreshHearts();
+
+            if (wrongSubmitCount < MaxWrongSubmits)
+            {
+                // First two wrong submits: halve the current score
+                scoreManager?.NotifyWrongSubmit();
+            }
+            else
+            {
+                // 3rd wrong submit: trigger fail state & show fail screen
+                levelTimer?.Stop();
+                scoreManager?.StopLevel();
+                levelEnded = true;
+                AnswerIncorrect?.Invoke();
+            }
         }
     }
 
@@ -211,6 +291,7 @@ public class LevelFlowManager : MonoBehaviour
 
     private void OnGapPressed(int rawIndex)
     {
+        if (levelEnded) return;
         if (sentenceView.IsGapFilled(rawIndex))
         {
             ReturnGapLetterToPool(rawIndex);
@@ -222,23 +303,14 @@ public class LevelFlowManager : MonoBehaviour
 
     private void OnPoolLetterPressed(LetterView poolLetter)
     {
-        if (activeGapIndex < 0)
+        if (levelEnded || activeGapIndex < 0)
             return;
 
         if (sentenceView.IsGapFilled(activeGapIndex))
             return;
 
-        SentenceData currentSentence = currentLevel.GetSentence(currentSentenceIndex);
-
-        // Only the last sentence (the answer) is validated letter-by-letter as you type.
-        // Earlier sentences accept whatever letter is pressed - no correctness check at all.
-        if (IsLastSentence && !IsLetterCorrect(currentSentence, activeGapIndex, poolLetter.Letter))
-        {
-            WrongLetterPressed?.Invoke();
-            Debug.Log($"Incorrect letter '{poolLetter.Letter}' pressed for gap at index {activeGapIndex}");
-            return;
-        }
-
+        // No sentence is validated letter-by-letter as you type anymore - any letter can be
+        // placed in any gap. The answer sentence is only checked as a whole on Submit.
         PlaceLetter(activeGapIndex, poolLetter);
         AdvanceToNextGap();
     }
@@ -256,6 +328,36 @@ public class LevelFlowManager : MonoBehaviour
         fills[gapIndex] = poolLetter;
 
         letterPool.SetLetterUsed(poolLetter, true);
+
+        if (currentSentenceIndex == 0)
+            CheckFirstSentenceWordBonus();
+    }
+
+    /// <summary>
+    /// Awards points whenever filling this letter completed a whole word in the first sentence
+    /// correctly. Reuses SentenceData's word-correctness check (same one ResetUnfinishedWords
+    /// uses) and pays out per gap the first time each gap is seen as part of a correct word, so
+    /// re-showing the page later never pays the same word twice.
+    /// </summary>
+    private void CheckFirstSentenceWordBonus()
+    {
+        SentenceData sentence = currentLevel?.GetSentence(0);
+        if (sentence == null || !sentenceGapFills.TryGetValue(0, out var fills))
+            return;
+
+        var filledLetters = new Dictionary<int, char>();
+        foreach (var kvp in fills)
+            if (kvp.Value != null) filledLetters[kvp.Key] = kvp.Value.Letter;
+
+        HashSet<int> correctGaps = sentence.GetCorrectWordGapIndices(filledLetters);
+
+        int newlyCorrectCount = 0;
+        foreach (int gapIndex in correctGaps)
+            if (creditedFirstSentenceGaps.Add(gapIndex))
+                newlyCorrectCount++;
+
+        if (newlyCorrectCount > 0)
+            scoreManager?.AddFirstSentenceWordBonus(newlyCorrectCount);
     }
 
     private bool IsLetterCorrect(SentenceData sentence, int gapIndex, char pressedLetter)
